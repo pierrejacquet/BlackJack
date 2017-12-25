@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>BlackJack</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="icon" href="">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="blackjack.css">
+
+
+</head>
+
+<body>
+
+    <!-- Button trigger modal dialog -->
+    <button type="button" class="dialoguebtn" data-toggle="modal" data-target="#PercevalModal">
+        <i class="fa fa-2x fa-comments" aria-hidden="true"></i>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="PercevalModal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+        <img src="img/perceval.png" class="perceval-avatar">
+        <div class="modal-dialog perceval" role="document">
+            <div class="modal-content">
+                <div class="modal-header noborder">
+                    <h5 class="modal-title" id="exampleModalLabel">Perceval:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="textperceval">Bonjour mon roi. Vous vouliez m'voir ?</p>
+                </div>
+                <div class="modal-footer noborder">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Fermer</button>
+                    <button type="button" class="btn btn-primary" id="nextdial">Suivant</button>
+                </div>
+            </div>
+        </div>
+
+        <img src="img/arthur1.png" class="arthur-avatar">
+        <div class="modal-dialog arthur" role="document">
+            <div class="modal-content">
+                <div class="modal-header noborder">
+                    <h5 class="modal-title" id="exampleModalLabel">Arthur</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="textarthur">Euh... Non pas particulièrement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Button trigger modal rules -->
+    <button type="button" class="dialoguebtn" data-toggle="modal" data-target="#rules">
+        <i class="fa fa-2x fa-book" aria-hidden="true"></i>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="Modal Règles" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Règles du BlackJack</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Ici Règles :)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--<img src="img/paper.png" class="parchemin"/>-->
+    <div id="score">
+        <p>18</p>
+        <p id="slash">/</p>
+        <p id="numerateur"> 21</p>
+    </div>
+
+    <div class="content">
+        <div class="col-10" id="gameboard">
+
+            <h1>BlackJack</h1>
+
+
+            <img src="img/back.png" width="200px" id="stack">
+            <div id="card1" class="gamecard">
+                <div class="front">
+                    <img src="img/back.png" width="200px">
+                </div>
+                <div class="back">
+                    <img data-tilt src="img/arthurcard.png" class="js-tilt shadow" width="200px">
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+
+    <!-- Tether -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Parralax effect -->
+    <script src="js/tilt.js"></script>
+
+    <!-- Card drag -->
+    <script src="card.js"></script>
+
+
+    <!-- Flip card Script CDN -->
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+
+</body>
+
+</html>
