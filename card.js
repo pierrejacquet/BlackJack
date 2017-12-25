@@ -160,11 +160,13 @@ function moneygenerator() {
     var bodyHeight = document.body.clientHeight;
     var randPosX = Math.floor((Math.random() * (bodyWidth*0.10)));
     var randPosY = Math.floor((Math.random() * (bodyHeight*0.15)));
+    var randAngle= Math.floor(Math.random() * 360) + 1;
 
     $("#"+newid).css('right', randPosX);
     $("#"+newid).css('top', randPosY);
     $("#"+newid).css('margin-top', "60vh");    
-    $("#"+newid).css('transform', "rotate(deg"+randPosY+")");    
+    $("#"+newid).css('transform','rotate('+randAngle+'deg)');
+    $('.money').drags();    
 }
 
 
@@ -182,6 +184,7 @@ function eventcall() {
 
     $("#nextdial").on("click", dialogue);
     $('h1').on("click", moneygenerator);
+    $('.money').drags();
 }
 
 

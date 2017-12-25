@@ -167,3 +167,8 @@
     position: absolute;
     width:150px;
   }
+  #piece1{
+    position: absolute;
+    top: 70vh;
+    right:10vh;
+  }
