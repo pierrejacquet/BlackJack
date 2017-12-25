@@ -79,12 +79,12 @@ function addcard() {
         "img/leodagan.png",
         "img/seli.png",
         "img/yvain.png"
-      ];
-      
-    randomItem = randomItem+1
-    
-    var nextcardid = nbcard + 1;file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
-    $("#gameboard").append("<div id='card" + nextcardid + "' class='gamecard'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='"+myArray[randomItem]+"' class='js-tilt shadow' width='200px'></div></div>");
+    ];
+
+    randomItem = randomItem + 1
+
+    var nextcardid = nbcard + 1; file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
+    $("#gameboard").append("<div id='card" + nextcardid + "' class='gamecard'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='200px'></div></div>");
     eventcall();
 }
 
@@ -104,49 +104,67 @@ function zoomcard() {
 }
 
 function dialogue() {
-    step=step+1;
+    step = step + 1;
     console.log(step)
-    if (step==1){
+    if (step == 1) {
         $("#textperceval").text("Bonjour mon roi. Vous vouliez m'voir ?");
         $("#textarthur").text("Euh... Non pas particulièrement.");
     }
-    if (step==2){
+    if (step == 2) {
         $("#textperceval").text("Ah au fait... Je vous ai déjà parlé du Jeu du pélican ?");
         $("#textarthur").text(" ");
     }
-    if (step==3){
+    if (step == 3) {
         $("#textperceval").text(" ");
         $("#textarthur").text("Ah non ! C'est mort vous commencez pas hein ! Vos jeux foireux on les connait !");
     }
-    if (step==4){
+    if (step == 4) {
         $("#textperceval").text("Vous ratez un truc Messire ! Un petit BlackJack Kaamelois alors ? ");
         $("#textarthur").text(" ");
     }
-    if (step==5){
+    if (step == 5) {
         $("#textperceval").text("");
         $("#textarthur").text("Mais puisque je vous dit que je m'en cogne de vos jeux là ! Vous allez me lachez la grappe oui ?");
     }
-    if (step==6){
+    if (step == 6) {
         $("#textperceval").text("Bon tant pis, pourtant Karadoc il est devenu bon dessus vous savez ?");
         $("#textarthur").text(" ");
     }
-    if (step==7){
+    if (step == 7) {
         $("#textperceval").text("");
         $("#textarthur").text("Attendez... Vous voulez dire que Karadoc, a pigé votre truc ?");
     }
-    if (step==8){
+    if (step == 8) {
         $("#textperceval").text("Carrément, puisque je vous dit que ça va c'est pas compliqué !");
         $("#textarthur").text("...");
     }
-    if (step==9){
+    if (step == 9) {
         $("#textperceval").text(" ");
         $("#textarthur").text("Bon allez-y faite moi jouer, mais attention, attention à ce que vous allez faire !");
     }
-    if (step==10){
-        step=0;
+    if (step == 10) {
+        step = 0;
         $("#nextdial").click();
         $("#close").click();
     }
+}
+
+var newmoney=1;
+function moneygenerator() {
+
+    newmoney = newmoney + 1;
+    var newid="piece"+newmoney
+    $("#gameboard").append('<img src="img/piece.png" class="money" id="'+newid+'">');
+
+    var bodyWidth = document.body.clientWidth;
+    var bodyHeight = document.body.clientHeight;
+    var randPosX = Math.floor((Math.random() * (bodyWidth*0.10)));
+    var randPosY = Math.floor((Math.random() * (bodyHeight*0.15)));
+
+    $("#"+newid).css('right', randPosX);
+    $("#"+newid).css('top', randPosY);
+    $("#"+newid).css('margin-top', "60vh");    
+    $("#"+newid).css('transform', "rotate(deg"+randPosY+")");    
 }
 
 
@@ -163,7 +181,7 @@ function eventcall() {
     });
 
     $("#nextdial").on("click", dialogue);
-
+    $('h1').on("click", moneygenerator);
 }
 
 
