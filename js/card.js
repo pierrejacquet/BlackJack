@@ -69,9 +69,10 @@ function animatecard() {
         }, 3000);
         setTimeout(function () {
             $(".money").addClass("shaking");
-        }, 4200);
+        }, 3200);
         setTimeout(function () {
             $("body *").removeClass("ease2");
+            $(".money").removeClass("shaking");
         }, 5000);
     }
 }
@@ -191,4 +192,5 @@ function eventcall() {
 
 
 eventcall()
+
 
