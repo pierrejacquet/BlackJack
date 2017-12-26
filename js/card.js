@@ -106,6 +106,15 @@ function addcard() {
     eventcall();
 }
 
+function zoom(){
+    clicked = this.id;
+    $("#"+clicked+" img").css('transform', "scale(1.2,1.2)").fadeIn(1000);
+}
+function dezoom(){
+    clicked = this.id;
+    $("#"+clicked+" img").css('transform', "scale(1)").fadeIn(1000);
+}
+
 
 function dialogue() {
     step = step + 1;
@@ -177,6 +186,9 @@ function moneygenerator() {
 function eventcall() {
     $(".gamecard").on("click", animatecard);
     $(".gamecard").on('flip:done', addcard);
+    $(".gamecard").on('mousedown', zoom);
+    $(".gamecard").on('mouseup', dezoom);    
+    
     $('.back').drags();
 
     $(function ($) {
