@@ -21,7 +21,7 @@
     -o-transition: margin-left 1.5s ease;
     transition: margin-left 1.5s ease;
     position: fixed!important;
-    bottom: 346px!important;  
+    bottom: 358px;  
 }
     .shadow{
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -172,3 +172,14 @@
     top: 70vh;
     right:10vh;
   }
+  .grow{
+      position: fixed!important;
+      bottom:800px!important;
+  }
+  .grow img{
+    width: 350px!important;
+    -webkit-transition: margin-left 1.5s ease;
+    -moz-transition: margin-left 1.5s ease;
+    -o-transition: margin-left 1.5s ease;
+    transition: margin-left 1.5s ease;
+}

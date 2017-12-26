@@ -84,7 +84,7 @@ function addcard() {
     randomItem = randomItem + 1
 
     var nextcardid = nbcard + 1; file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
-    $("#gameboard").append("<div id='card" + nextcardid + "' class='gamecard'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='200px'></div></div>");
+    $("#gameboard").append("<div id='card" + nextcardid + "' class='gamecard'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='300px'></div></div>");
     eventcall();
 }
 
@@ -95,10 +95,8 @@ function allowzoom() {
 
 function zoomcard() {
     activecard = this.id;
+    $("#" + activecard).addClass("grow");  
     $("#" + activecard).mousedown(function () {
-        $("#" + activecard + " img").width("300px");
-    });
-    $("#" + activecard).mouseup(function () {
         $("#" + activecard + " img").width("200px");
     });
 }
@@ -172,7 +170,7 @@ function moneygenerator() {
 
 function eventcall() {
     $(".gamecard").on("click", animatecard);
-    $(".gamecard").on('flip:done', allowzoom);
+    $(".gamecard").on('flip:done', zoomcard);
     $(".gamecard").on('flip:done', addcard);
     $('.js-tilt').drags();
     $('.js-tilt').tilt();
