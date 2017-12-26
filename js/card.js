@@ -1,3 +1,4 @@
+// GRAB FUNCTION
 (function ($) {
     $.fn.drags = function (opt) {
 
@@ -78,7 +79,8 @@ function animatecard() {
 }
 
 
-var randomItem = -1
+var randomItem = -1;
+var cardonboard=[];
 function addcard() {
     var nbcard = numberofcard();
     var myArray = [
@@ -99,10 +101,16 @@ function addcard() {
         "img/yvain.png"
     ];
 
-    randomItem = randomItem + 1
+    randomItem = Math.floor(Math.random() * myArray.length);
+    while (jQuery.inArray(randomItem, cardonboard) !== -1){
+        randomItem = Math.floor(Math.random() * myArray.length);        
+    }
 
     var nextcardid = nbcard + 1; file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
     $("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img src='" + myArray[randomItem] + "' class='shadow' width='200px'></div></div>").hide().appendTo("#gameboard").fadeIn(1000);
+    
+    cardonboard.push(randomItem);
+
     eventcall();
 }
 
@@ -164,7 +172,6 @@ function dialogue() {
 
 var newmoney = 1;
 function moneygenerator() {
-
     newmoney = newmoney + 1;
     var newid = "piece" + newmoney
     $("#gameboard").append('<img src="img/piece.png" class="money" id="' + newid + '">');
@@ -188,7 +195,6 @@ function eventcall() {
     $(".gamecard").on('flip:done', addcard);
     $(".gamecard").on('mousedown', zoom);
     $(".gamecard").on('mouseup', dezoom);    
-    
     $('.back').drags();
 
     $(function ($) {
@@ -198,11 +204,11 @@ function eventcall() {
     });
 
     $("#nextdial").on("click", dialogue);
-    $('h1').on("click", moneygenerator);
     $('.money').drags();
 }
 
-
+$('h1').on("click", moneygenerator);
+$( "#dialogue" ).trigger( "click" );
 eventcall()
 
 
