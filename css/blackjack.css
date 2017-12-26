@@ -1,6 +1,6 @@
 @font-face {
     font-family: chalk;
-    src: url(font/DCC.ttf);
+    src: url(../fonts/DCC.ttf);
 }
 .js-tilt {
     line-height: 100px;
@@ -10,18 +10,15 @@
     top: 20px;
   }
 
-  .center-div
-  {
-    position: absolute;
-    margin-left: 25vw;
-}
+
   .gamecard{
     -webkit-transition: margin-left 1.5s ease;
     -moz-transition: margin-left 1.5s ease;
     -o-transition: margin-left 1.5s ease;
     transition: margin-left 1.5s ease;
     position: fixed!important;
-    bottom: 358px;  
+    bottom: 358px;
+    left: 15px;  
 }
     .shadow{
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -47,7 +44,7 @@
 
   body{
       min-height: 100vh;
-      background:url("img/background.jpg");
+      background:url("../img/background.jpg");
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -172,14 +169,33 @@
     top: 70vh;
     right:10vh;
   }
+
+  .ease{
+    -webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+    transition: all 1.5s ease;
+  }
+  .ease img{
+    -webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+    transition: all 1.5s ease;
+  }
   .grow{
       position: fixed!important;
       bottom:800px!important;
+      text-align: center;
+      left: 50%;
+      margin-left: -175px; /* Half of the zoomed div*/
   }
+
   .grow img{
     width: 350px!important;
-    -webkit-transition: margin-left 1.5s ease;
-    -moz-transition: margin-left 1.5s ease;
-    -o-transition: margin-left 1.5s ease;
-    transition: margin-left 1.5s ease;
+}
+
+.onboard{
+    position: fixed!important;
+    bottom:800px!important;
+    margin-left: 25vw;
 }

@@ -54,10 +54,21 @@ function animatecard() {
     clicked = this.id;
     console.log(clicked);
 
-    $('#' + clicked).addClass("center-div");
-    setTimeout(function () {
-        $('#' + clicked).flip(true);
-    }, 2000);
+    //Animate the card only if it's not already placed on gameboard
+    if (!$('#' + clicked).hasClass("onboard")) {
+        $('#' + clicked).addClass("grow");
+        setTimeout(function () {
+            $('#' + clicked).flip(true);
+        }, 2000);
+
+        setTimeout(function () {
+            $('#' + clicked).removeClass("grow");
+            $('#' + clicked).addClass("onboard");
+        }, 3000);
+        setTimeout(function () {
+            $('#' + clicked).removeClass("ease");            
+        }, 5000);
+    }
 }
 
 var randomItem = -1
@@ -84,22 +95,10 @@ function addcard() {
     randomItem = randomItem + 1
 
     var nextcardid = nbcard + 1; file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
-    $("#gameboard").append("<div id='card" + nextcardid + "' class='gamecard'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='300px'></div></div>");
+    $("#gameboard").append("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='200px'></div></div>");
     eventcall();
 }
 
-
-function allowzoom() {
-    $(".gamecard").on("mouseover", zoomcard);
-}
-
-function zoomcard() {
-    activecard = this.id;
-    $("#" + activecard).addClass("grow");  
-    $("#" + activecard).mousedown(function () {
-        $("#" + activecard + " img").width("200px");
-    });
-}
 
 function dialogue() {
     step = step + 1;
@@ -147,30 +146,29 @@ function dialogue() {
     }
 }
 
-var newmoney=1;
+var newmoney = 1;
 function moneygenerator() {
 
     newmoney = newmoney + 1;
-    var newid="piece"+newmoney
-    $("#gameboard").append('<img src="img/piece.png" class="money" id="'+newid+'">');
+    var newid = "piece" + newmoney
+    $("#gameboard").append('<img src="img/piece.png" class="money" id="' + newid + '">');
 
     var bodyWidth = document.body.clientWidth;
     var bodyHeight = document.body.clientHeight;
-    var randPosX = Math.floor((Math.random() * (bodyWidth*0.10)));
-    var randPosY = Math.floor((Math.random() * (bodyHeight*0.15)));
-    var randAngle= Math.floor(Math.random() * 360) + 1;
+    var randPosX = Math.floor((Math.random() * (bodyWidth * 0.10)));
+    var randPosY = Math.floor((Math.random() * (bodyHeight * 0.15)));
+    var randAngle = Math.floor(Math.random() * 360) + 1;
 
-    $("#"+newid).css('right', randPosX);
-    $("#"+newid).css('top', randPosY);
-    $("#"+newid).css('margin-top', "60vh");    
-    $("#"+newid).css('transform','rotate('+randAngle+'deg)');
-    $('.money').drags();    
+    $("#" + newid).css('right', randPosX);
+    $("#" + newid).css('top', randPosY);
+    $("#" + newid).css('margin-top', "60vh");
+    $("#" + newid).css('transform', 'rotate(' + randAngle + 'deg)');
+    $('.money').drags();
 }
 
 
 function eventcall() {
     $(".gamecard").on("click", animatecard);
-    $(".gamecard").on('flip:done', zoomcard);
     $(".gamecard").on('flip:done', addcard);
     $('.js-tilt').drags();
     $('.js-tilt').tilt();
