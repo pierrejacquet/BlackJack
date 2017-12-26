@@ -25,9 +25,6 @@
   .gamecard img{
     border-radius: 7px;
 }
-.back{
-    cursor: grabbing;
-}  
 
 .back img{
     line-height: 100px;
@@ -35,6 +32,7 @@
     position: absolute;
     left: 20px;
     top: 20px;
+    cursor: url(../asset/cursor-click.png);
 }
   #stack{
       position: fixed;
@@ -49,7 +47,11 @@
       background-position: center center;
       background-repeat: no-repeat;
       color: white;
+      cursor: url(../asset/cursor.png) 10 2, auto;
   }
+ *:active {
+    cursor: url(../asset/cursor-click.png) 10 2, auto;
+}
   .blur{
     -webkit-filter: blur(5px); /* Chrome, Safari, Opera */
     filter: blur(5px);

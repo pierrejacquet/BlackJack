@@ -1,7 +1,7 @@
 (function ($) {
     $.fn.drags = function (opt) {
 
-        opt = $.extend({ handle: "", cursor: "move" }, opt);
+        opt = $.extend({ handle: "", cursor: "url(asset/grab.png) 10 2, auto" }, opt);
 
         if (opt.handle === "") {
             var $el = this;
