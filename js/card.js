@@ -71,10 +71,11 @@ function animatecard() {
             $(".money").addClass("shaking");
         }, 4200);
         setTimeout(function () {
-            $('#' + clicked).removeClass("ease2");
+            $("body *").removeClass("ease2");
         }, 5000);
     }
 }
+
 
 var randomItem = -1
 function addcard() {
@@ -100,7 +101,7 @@ function addcard() {
     randomItem = randomItem + 1
 
     var nextcardid = nbcard + 1; file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
-    $("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='200px'></div></div>").hide().appendTo("#gameboard").fadeIn(1000);
+    $("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img src='" + myArray[randomItem] + "' class='shadow' width='200px'></div></div>").hide().appendTo("#gameboard").fadeIn(1000);
     eventcall();
 }
 
@@ -175,8 +176,8 @@ function moneygenerator() {
 function eventcall() {
     $(".gamecard").on("click", animatecard);
     $(".gamecard").on('flip:done', addcard);
-    $('.js-tilt').drags();
-    $('.js-tilt').tilt();
+    $('.back').drags();
+
     $(function ($) {
         $('.gamecard').flip({
             trigger: 'manual'
@@ -190,10 +191,4 @@ function eventcall() {
 
 
 eventcall()
-
-
-$('.js-tilt').tilt({
-    glare: true,
-    maxGlare: 1
-})
 

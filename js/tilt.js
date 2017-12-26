@@ -299,7 +299,7 @@
     /**
      * Auto load
      */
-    $('[data-tilt]').tilt();
+   $('[data-tilt]').tilt();
 
     return true;
 }));

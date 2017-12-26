@@ -2,13 +2,7 @@
     font-family: chalk;
     src: url(../fonts/DCC.ttf);
 }
-.js-tilt {
-    line-height: 100px;
-    text-align: center;
-    position: absolute;
-    left: 20px;
-    top: 20px;
-  }
+
 
 
   .gamecard{
@@ -32,10 +26,16 @@
     border-radius: 7px;
 }
 .back{
-    cursor: grabbing;  
-    
+    cursor: grabbing;
 }  
 
+.back img{
+    line-height: 100px;
+    text-align: center;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
   #stack{
       position: fixed;
       bottom:51px;
@@ -171,28 +171,28 @@
   }
 
   .ease{
-    -webkit-transition: all 1.7s ease;
-    -moz-transition: all 1.7s ease;
-    -o-transition: all 1.7s ease;
-    transition: all 1.7s ease;
+    -webkit-transition: all 1.3s ease;
+    -moz-transition: all 1.3s ease;
+    -o-transition: all 1.3s ease;
+    transition: all 1.3s ease;
   }
   .ease img{
-    -webkit-transition: all 1.7s ease;
-    -moz-transition: all 1.7s ease;
-    -o-transition: all 1.7s ease;
-    transition: all 1.7s ease;
+    -webkit-transition: all 1.3s ease;
+    -moz-transition: all 1.3s ease;
+    -o-transition: all 1.3s ease;
+    transition: all 1.3s ease;
   }
   .ease2{
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
   .ease2 img{
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
   .grow{
       position: fixed!important;
@@ -210,6 +210,10 @@
     position: fixed!important;
     bottom:800px!important;
     margin-left: 15vw;
+}
+
+.onboard .back{
+    transition: all 0s!important;
 }
 
 .shaking {
