@@ -64,12 +64,14 @@ function animatecard() {
         setTimeout(function () {
             $('#' + clicked).removeClass("grow");
             $('#' + clicked).addClass("onboard");
+            $('#' + clicked).removeClass("ease");
+            $('#' + clicked).addClass("ease2");
         }, 3000);
         setTimeout(function () {
             $(".money").addClass("shaking");
         }, 4200);
         setTimeout(function () {
-            $('#' + clicked).removeClass("ease");
+            $('#' + clicked).removeClass("ease2");
         }, 5000);
     }
 }
