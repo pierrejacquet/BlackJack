@@ -44,6 +44,24 @@
 
 
 var step = 1;
+var myArray = [
+    "img/loth.png",
+    "img/ygerne.png",
+    "img/velec.png",
+    "img/percevalcard.png",
+    "img/karadoc.png",
+    "img/bohort.png",
+    "img/merlin.png",
+    "img/elias.png",
+    "img/damelac.png",
+    "img/Blaise.png",
+    "img/guenievre.png",
+    "img/lancelot.png",
+    "img/leodagan.png",
+    "img/seli.png",
+    "img/arthur.png",
+    "img/yvain.png"
+];
 
 function numberofcard() {
     var nbcard = $('div.gamecard').length;
@@ -81,36 +99,20 @@ function animatecard() {
 
 var randomItem = -1;
 var cardonboard=[];
-function addcard() {
-    var nbcard = numberofcard();
-    var myArray = [
-        "img/loth.png",
-        "img/ygerne.png",
-        "img/velec.png",
-        "img/percevalcard.png",
-        "img/karadoc.png",
-        "img/bohort.png",
-        "img/merlin.png",
-        "img/elias.png",
-        "img/damelac.png",
-        "img/Blaise.png",
-        "img/guenievre.png",
-        "img/lancelot.png",
-        "img/leodagan.png",
-        "img/seli.png",
-        "img/yvain.png"
-    ];
-
+function randomcard(){
     randomItem = Math.floor(Math.random() * myArray.length);
     while (jQuery.inArray(randomItem, cardonboard) !== -1){
         randomItem = Math.floor(Math.random() * myArray.length);        
     }
-
-    var nextcardid = nbcard + 1; file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
-    $("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img src='" + myArray[randomItem] + "' class='shadow' width='200px'></div></div>").hide().appendTo("#gameboard").fadeIn(1000);
-    
     cardonboard.push(randomItem);
+    return randomItem;
+}
 
+function addcard() {
+    var nbcard = numberofcard();
+    randomItem=randomcard()
+    var nextcardid = nbcard + 1;
+    $("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img src='" + myArray[randomItem] + "' class='shadow' width='200px'></div></div>").hide().appendTo("#gameboard").fadeIn(1000);
     eventcall();
 }
 
@@ -207,6 +209,11 @@ function eventcall() {
     $('.money').drags();
 }
 
+
+
+//MAIN 
+
+$('#cartestarter').attr("src", myArray[randomcard()]);
 $('h1').on("click", moneygenerator);
 $( "#dialogue" ).trigger( "click" );
 eventcall()
