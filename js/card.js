@@ -66,7 +66,10 @@ function animatecard() {
             $('#' + clicked).addClass("onboard");
         }, 3000);
         setTimeout(function () {
-            $('#' + clicked).removeClass("ease");            
+            $(".money").addClass("shaking");
+        }, 4200);
+        setTimeout(function () {
+            $('#' + clicked).removeClass("ease");
         }, 5000);
     }
 }
@@ -95,7 +98,7 @@ function addcard() {
     randomItem = randomItem + 1
 
     var nextcardid = nbcard + 1; file:///home/pierre/github/BlackJack/blacblackjackblackjackkjack.html
-    $("#gameboard").append("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='200px'></div></div>");
+    $("<div id='card" + nextcardid + "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img data-tilt src='" + myArray[randomItem] + "' class='js-tilt shadow' width='200px'></div></div>").hide().appendTo("#gameboard").fadeIn(1000);
     eventcall();
 }
 
