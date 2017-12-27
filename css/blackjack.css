@@ -1,263 +1,281 @@
 @font-face {
-    font-family: chalk;
-    src: url(../fonts/DCC.ttf);
+  font-family: chalk;
+  src: url(../fonts/DCC.ttf);
 }
 
-
-
-  .gamecard{
-    -webkit-transition: margin-left 1.5s ease;
-    -moz-transition: margin-left 1.5s ease;
-    -o-transition: margin-left 1.5s ease;
-    transition: margin-left 1.5s ease;
-    position: fixed!important;
-    bottom: 358px;
-    left: 15px;  
+.gamecard {
+  -webkit-transition: margin-left 1.5s ease;
+  -moz-transition: margin-left 1.5s ease;
+  -o-transition: margin-left 1.5s ease;
+  transition: margin-left 1.5s ease;
+  position: fixed !important;
+  bottom: 358px;
+  left: 15px;
 }
-    .shadow{
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-   /* transition: all 0.3s cubic-bezier(.25,.8,.25,1);*/
-  }
-
-  .shadow:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
-  .gamecard img{
-    border-radius: 7px;
+.shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  /* transition: all 0.3s cubic-bezier(.25,.8,.25,1);*/
 }
 
-.back img{
-    line-height: 100px;
-    text-align: center;
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    cursor: url(../asset/cursor-click.png);
+.shadow:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-  #stack{
-      position: fixed;
-      bottom:51px;
-
-  }
-
-  body{
-      min-height: 100vh;
-      background:url("../img/background.jpg");
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      color: white;
-      cursor: url(../asset/cursor.png) 10 2, auto;
-      overflow: hidden;
-  }
- *:active {
-    cursor: url(../asset/cursor-click.png) 10 2, auto;
-}
-  .blur{
-    -webkit-filter: blur(5px); /* Chrome, Safari, Opera */
-    filter: blur(5px);
-  }
-
-.perceval{
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    margin: 0;
-}
-.perceval-avatar{
-    position: absolute;
-    bottom: 0px;
+.gamecard img {
+  border-radius: 7px;
 }
 
-.arthur{
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    width: 100%;
-    margin: 0;
+.back img {
+  line-height: 100px;
+  text-align: center;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  cursor: url(../asset/cursor-click.png);
+}
+#stack {
+  position: fixed;
+  bottom: 51px;
 }
 
-.arthur-avatar{
-    position: absolute;
-    bottom: -126px;
-    right: 0px;
-    width: 430px;
+body {
+  min-height: 100vh;
+  background: url("../img/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
+  cursor: url(../asset/cursor.png) 10 2, auto;
+  overflow: hidden;
+}
+*:active {
+  cursor: url(../asset/cursor-click.png) 10 2, auto;
+}
+.blur {
+  -webkit-filter: blur(5px); /* Chrome, Safari, Opera */
+  filter: blur(5px);
 }
 
-.noborder{
-    border: none!important;
+.perceval {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  margin: 0;
 }
-.modal{
-    overflow: hidden;
-}
-.modal-content{
-    background-color: #02010199!important;
-    min-height:25vh;
-}
-
-.modal-backdrop{
-    opacity:0.8 !important;
-
-}
-.modal::after{
-    -webkit-filter: blur(5px)!important;
-    -moz-filter: blur(5px)!important;
-    -o-filter: blur(5px)!important;
-    -ms-filter: blur(5px)!important;
-    filter: blur(50px)!important;
+.perceval-avatar {
+  position: absolute;
+  bottom: 0px;
 }
 
-#rules .modal-content{
-    background-color: #fff!important;
-    min-height:25vh;
-    color:rgb(28, 28, 29);
-}
-.dialoguebtn{
-    background: none;
-    color:white;
-    border:none;
-}
-.fa{
-    opacity: .8;
-}
-.fa-book{
-    color:white;
-    border-radius:50%;
-    animation:op 3s ease infinite;
-  }
-  @keyframes op{
-  0%{
-    opacity:.4;
-  }
-  50%{
-    opacity:.8;
-  }
-  100%{
-    opacity:.4;
-  }
-  }
-
-  .parchemin{
-    position: fixed;
-    top: 40vh;
-    width:300px;
-    left:50px;
-  }
-  #score{
-      font-family: chalk;
-      font-size: 10em;
-      position: fixed;
-      right: 121px;
-      top:28vh;
-      transform: rotate(-21deg);
-      color: rgba(254, 249, 249, 0.64);
-      line-height: 54px;
-  }
-  #slash{
-    margin-left: 48px;
-    transform: rotate(34deg);
-    margin-top: 39px;
-  }
-  #numerateur{
-    margin-left: 83px;
-    margin-top: -56px;
-  }
-  .money{
-    position: absolute;
-    width:150px;
-  }
-  #piece1{
-    position: absolute;
-    top: 70vh;
-    right:10vh;
-  }
-
-  .ease{
-    -webkit-transition: all 1.3s ease;
-    -moz-transition: all 1.3s ease;
-    -o-transition: all 1.3s ease;
-    transition: all 1.3s ease;
-  }
-  .ease img{
-    -webkit-transition: all 1.3s ease;
-    -moz-transition: all 1.3s ease;
-    -o-transition: all 1.3s ease;
-    transition: all 1.3s ease;
-  }
-  .ease2{
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-  .ease2 img{
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-  .grow{
-      position: fixed!important;
-      bottom:800px!important;
-      text-align: center;
-      left: 50%;
-      margin-left: -175px; /* Half of the zoomed div*/
-  }
-
-  .grow img{
-    width: 350px!important;
+.arthur {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  margin: 0;
 }
 
-.onboard{
-    position: fixed!important;
-    bottom:800px!important;
-    margin-left: 15vw;
+.arthur-avatar {
+  position: absolute;
+  bottom: -126px;
+  right: 0px;
+  width: 430px;
 }
 
-.onboard .back{
-    transition: all 0s!important;
+.noborder {
+  border: none !important;
+}
+.modal {
+  overflow: hidden;
+}
+.modal-content {
+  background-color: #02010199 !important;
+  min-height: 25vh;
+}
+
+.modal-backdrop {
+  opacity: 0.8 !important;
+}
+.modal::after {
+  -webkit-filter: blur(5px) !important;
+  -moz-filter: blur(5px) !important;
+  -o-filter: blur(5px) !important;
+  -ms-filter: blur(5px) !important;
+  filter: blur(50px) !important;
+}
+
+#rules .modal-content {
+  background-color: #fff !important;
+  min-height: 25vh;
+  color: rgb(28, 28, 29);
+}
+.dialoguebtn {
+  background: none;
+  color: white;
+  border: none;
+}
+.fa {
+  opacity: 0.8;
+}
+.fa-book {
+  color: white;
+  border-radius: 50%;
+  animation: op 3s ease infinite;
+}
+@keyframes op {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.parchemin {
+  position: fixed;
+  top: 40vh;
+  width: 300px;
+  left: 50px;
+}
+#score {
+  font-family: chalk;
+  font-size: 10em;
+  position: fixed;
+  right: 121px;
+  top: 28vh;
+  transform: rotate(-21deg);
+  color: rgba(254, 249, 249, 0.64);
+  line-height: 54px;
+}
+#slash {
+  margin-left: 48px;
+  transform: rotate(34deg);
+  margin-top: 39px;
+}
+#numerateur {
+  margin-left: 83px;
+  margin-top: -56px;
+}
+.money {
+  position: absolute;
+  width: 150px;
+}
+#piece1 {
+  position: absolute;
+  top: 70vh;
+  right: 10vh;
+}
+
+.ease {
+  -webkit-transition: all 1.3s ease;
+  -moz-transition: all 1.3s ease;
+  -o-transition: all 1.3s ease;
+  transition: all 1.3s ease;
+}
+.ease img {
+  -webkit-transition: all 1.3s ease;
+  -moz-transition: all 1.3s ease;
+  -o-transition: all 1.3s ease;
+  transition: all 1.3s ease;
+}
+.ease2 {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.ease2 img {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.grow {
+  position: fixed !important;
+  bottom: 800px !important;
+  text-align: center;
+  left: 50%;
+  margin-left: -175px; /* Half of the zoomed div*/
+}
+
+.grow img {
+  width: 350px !important;
+}
+
+.onboard {
+  position: fixed !important;
+  bottom: 800px !important;
+  margin-left: 15vw;
+}
+
+.onboard .back {
+  transition: all 0s !important;
 }
 
 .shaking {
-    animation: shake 0.5s;
-  }
-  
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+  animation: shake 0.5s;
+}
 
-  .cardock {
-	perspective: 400px;
-	position: absolute;
-	transform-style: preserve-3d;
-	will-change: transform;	
-	user-drag: none; 
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-drag: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.cardock {
+  perspective: 400px;
+  position: absolute;
+  transform-style: preserve-3d;
+  will-change: transform;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .cardock-image {
-	pointer-events: none;
-	transform-style: preserve-3d;
-	will-change: transform;
-	user-drag: none; 
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-drag: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
