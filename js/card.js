@@ -59,24 +59,64 @@
 })(jQuery);
 
 var step = 1;
-var myArray = [
-  "img/loth.png",
-  "img/ygerne.png",
-  "img/velec.png",
-  "img/percevalcard.png",
-  "img/karadoc.png",
-  "img/bohort.png",
-  "img/merlin.png",
-  "img/elias.png",
-  "img/damelac.png",
-  "img/Blaise.png",
-  "img/guenievre.png",
-  "img/lancelot.png",
-  "img/leodagan.png",
-  "img/seli.png",
-  "img/arthur.png",
-  "img/yvain.png"
-];
+var path="img/card/"
+var myCards = {
+  1:{"path":"C2.png", "value":2},
+  2:{"path":"C3.png", "value":3},
+  3:{"path":"C4.png", "value":4},
+  4:{"path":"C5.png", "value":5},
+  5:{"path":"C6.png", "value":6},
+  6:{"path":"C7.png", "value":7},
+  7:{"path":"C8.png", "value":8},
+  8:{"path":"C9.png", "value":9},
+  9:{"path":"C10.png","value":10},
+  10:{"path":"CA.png","value":11},  
+  11:{"path":"CR.png", "value":10},
+  12:{"path":"CD.png", "value":10},
+  13:{"path":"CV.png", "value":10},
+  14:{"path":"K2.png", "value":2},
+  15:{"path":"K3.png", "value":3},
+  16:{"path":"K4.png", "value":4},
+  17:{"path":"K5.png", "value":5},
+  18:{"path":"K6.png", "value":6},
+  19:{"path":"K7.png", "value":7},
+  20:{"path":"K8.png", "value":8},
+  21:{"path":"K9.png", "value":9},
+  22:{"path":"K10.png", "value":10},
+  23:{"path":"KA.png", "value":11},  
+  24:{"path":"KR.png", "value":10},
+  25:{"path":"KD.png", "value":10},
+  26:{"path":"KV.png", "value":10},
+  27:{"path":"T2.png", "value":2},
+  28:{"path":"T3.png", "value":3},
+  29:{"path":"T4.png", "value":4},
+  30:{"path":"T5.png", "value":5},
+  31:{"path":"T6.png", "value":6},
+  32:{"path":"T7.png", "value":7},
+  33:{"path":"T8.png", "value":8},
+  34:{"path":"T9.png", "value":9},
+  35:{"path":"T10.png", "value":10},
+  36:{"path":"TA.png", "value":11},
+  37:{"path":"TR.png", "value":10},
+  38:{"path":"TD.png", "value":10},
+  39:{"path":"TV.png", "value":10},
+  40:{"path":"P2.png", "value":2},
+  41:{"path":"P3.png", "value":3},
+  42:{"path":"P4.png", "value":4},
+  43:{"path":"P5.png", "value":5},
+  44:{"path":"P6.png", "value":6},
+  45:{"path":"P7.png", "value":7},
+  46:{"path":"P8.png", "value":8},
+  47:{"path":"P9.png", "value":9},
+  48:{"path":"P10.png", "value":10},
+  49:{"path":"PA.png", "value":11},  
+  50:{"path":"PR.png", "value":10},
+  51:{"path":"PD.png", "value":10},
+  52:{"path":"PV.png", "value":10}
+};
+var randomItem = -1;
+var cardonboard = [];
+
 
 function numberofcard() {
   var nbcard = $("div.gamecard").length;
@@ -111,14 +151,15 @@ function animatecard() {
   }
 }
 
-var randomItem = -1;
-var cardonboard = [];
+
 function randomcard() {
-  randomItem = Math.floor(Math.random() * myArray.length);
+  randomItem = Math.floor(Math.random() * Object.keys(myCards).length);
+
   while (jQuery.inArray(randomItem, cardonboard) !== -1) {
-    randomItem = Math.floor(Math.random() * myArray.length);
+    randomItem = Math.floor(Math.random() * Object.keys(myCards).length);
   }
   cardonboard.push(randomItem);
+  console.log(cardonboard);
   return randomItem;
 }
 
@@ -130,7 +171,7 @@ function addcard() {
     "<div id='card" +
       nextcardid +
       "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img src='" +
-      myArray[randomItem] +
+      path+myCards[randomItem]["path"] +
       "' class='shadow' width='200px'></div></div>"
   )
     .hide()
@@ -254,7 +295,7 @@ function eventcall() {
 
 //MAIN
 
-$("#cartestarter").attr("src", myArray[randomcard()]);
+$("#cartestarter").attr("src", path+myCards[randomcard()]["path"]);
 $("h1").on("click", moneygenerator);
 $("#dialogue").trigger("click");
 eventcall();
