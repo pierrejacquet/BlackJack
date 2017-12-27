@@ -6,5 +6,4 @@ TO-DO:
 - Jeu principal
 - Main qui attrape ?
 - Monney
-- ENLEVER LES CDN
 - Actualisation du score
