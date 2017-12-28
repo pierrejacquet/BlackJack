@@ -204,14 +204,14 @@ function dialogue() {
   }
   if (step == 2) {
     $("#textperceval").text(
-      "Ah au fait... Je vous ai déjà parlé du Jeu du pélican ?"
+      "Ah au fait... Je vous ai déjà parlé du jeu du pélican ?"
     );
     $("#textarthur").text(" ");
   }
   if (step == 3) {
     $("#textperceval").text(" ");
     $("#textarthur").text(
-      "Ah non ! C'est mort vous commencez pas hein ! Vos jeux foireux on les connait !"
+      "Ah non ! C'est mort, vous commencez pas hein ! Vos jeux foireux on les connait !"
     );
   }
   if (step == 4) {
@@ -223,7 +223,7 @@ function dialogue() {
   if (step == 5) {
     $("#textperceval").text("");
     $("#textarthur").text(
-      "Mais puisque je vous dit que je m'en cogne de vos jeux là ! Vous allez me lachez la grappe oui ?"
+      "Mais puisque je vous dis que je m'en cogne de vos jeux là ! Vous allez me lâcher la grappe oui ?"
     );
   }
   if (step == 6) {
@@ -235,19 +235,19 @@ function dialogue() {
   if (step == 7) {
     $("#textperceval").text("");
     $("#textarthur").text(
-      "Attendez... Vous voulez dire que Karadoc, a pigé votre truc ?"
+      "Attendez... Vous voulez dire que Karadoc a pigé votre truc ?"
     );
   }
   if (step == 8) {
     $("#textperceval").text(
-      "Carrément, puisque je vous dit que ça va c'est pas compliqué !"
+      "Carrément, puisque je vous dis que c'est pas compliqué !"
     );
     $("#textarthur").text("...");
   }
   if (step == 9) {
     $("#textperceval").text(" ");
     $("#textarthur").text(
-      "Bon allez-y faite moi jouer, mais attention, attention à ce que vous allez faire !"
+      "Bon allez-y faite moi jouer, mais attention, attention à ce que vous allez baver !"
     );
   }
   if (step == 10) {
@@ -276,10 +276,11 @@ function moneygenerator() {
   $("#" + newid).css("transform", "rotate(" + randAngle + "deg)");
   $(".money").drags();
 }
+
 function refreshscore() {
   if (cardonboard.length > 1) {
     var lastcardplayed = cardonboard[cardonboard.length -2]; //La dernière carte de la liste correspondant à celle placée sur le plateau mais non retournée.
-    console.log(lastcardplayed);    
+    console.log(lastcardplayed);
     score = score + myCards[lastcardplayed]["value"];
     $("#numerateur").text(score);
   }
