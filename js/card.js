@@ -280,11 +280,7 @@ function moneygenerator() {
 
 function refreshscore() {
   if (cardonboard.length > 1) {
-<<<<<<< HEAD
-    var lastcardplayed = cardonboard[cardonboard.length - 2]; //La dernière carte de la liste correspondant à celle placée sur le plateau mais non retournée.
-=======
     var lastcardplayed = cardonboard[cardonboard.length -2]; //La dernière carte de la liste correspondant à celle placée sur le plateau mais non retournée.
->>>>>>> b19ea22968ad71b9a900bb9236d5b70b2bde86c4
     console.log(lastcardplayed);
     score = score + myCards[lastcardplayed]["value"];
     $("#numerateur").text(score);
