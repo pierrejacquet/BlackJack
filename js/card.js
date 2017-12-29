@@ -136,10 +136,11 @@ function animatecard() {
     setTimeout(function() {
       $("#" + clicked).flip(true);
     }, 2000);
-
+    var left = cardonboard.length * 4;
     setTimeout(function() {
       $("#" + clicked).removeClass("grow");
       $("#" + clicked).addClass("onboard");
+      $("#" + clicked).css("left", left + "vw");
       $("#" + clicked).removeClass("ease");
       $("#" + clicked).addClass("ease2");
     }, 3000);
@@ -279,10 +280,20 @@ function moneygenerator() {
 
 function refreshscore() {
   if (cardonboard.length > 1) {
+<<<<<<< HEAD
+    var lastcardplayed = cardonboard[cardonboard.length - 2]; //La dernière carte de la liste correspondant à celle placée sur le plateau mais non retournée.
+=======
     var lastcardplayed = cardonboard[cardonboard.length -2]; //La dernière carte de la liste correspondant à celle placée sur le plateau mais non retournée.
+>>>>>>> b19ea22968ad71b9a900bb9236d5b70b2bde86c4
     console.log(lastcardplayed);
     score = score + myCards[lastcardplayed]["value"];
     $("#numerateur").text(score);
+  }
+  if (score > 21) {
+    setTimeout(function() {
+      $(".defeat").show();
+      $(".onboard").remove();
+    }, 2000);
   }
 }
 
