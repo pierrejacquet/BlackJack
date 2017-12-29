@@ -134,11 +134,13 @@ body {
   }
 }
 
-.parchemin {
+.defeat {
   position: fixed;
-  top: 40vh;
-  width: 300px;
-  left: 50px;
+  top: 10vh;
+  width: 70vw;
+  left: 15vw;
+  z-index: 99;
+  display: none;
 }
 #score {
   font-family: chalk;
@@ -208,7 +210,7 @@ body {
 .onboard {
   position: fixed !important;
   bottom: 800px !important;
-  margin-left: 15vw;
+  /*margin-left: 15vw;*/
 }
 
 .onboard .back {
