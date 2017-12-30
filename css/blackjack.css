@@ -67,6 +67,22 @@ body {
   bottom: 0px;
 }
 
+#titre{
+    font-family: chalk;
+    font-size: 6em;
+    text-shadow: 3px 3px 2px rgba(17, 16, 16, 0.753);
+    top: 10vh;
+    position: fixed;
+    left: 10vw;
+    color: rgba(255, 255, 255, 0.829);
+    z-index: 1;
+}
+.logo{
+
+    top: 5vh;
+    position: fixed;
+    left: 10vw;
+}
 .arthur {
   position: absolute;
   bottom: 0px;
