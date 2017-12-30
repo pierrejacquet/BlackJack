@@ -26,10 +26,11 @@
 
 <body>
     <div id="arrow" class="bottom">
-        <p id="arrowtext">A votre Tour<br> Piochez une carte !</p>
-            <img class="" src="img/arrow.png"  />
+        <p id="arrowtext">A votre Tour
+            <br> Piochez une carte !</p>
+        <img class="" src="img/arrow.png" />
     </div>
-    
+
     <!-- Button trigger modal dialog -->
     <button type="button" class="dialoguebtn" data-toggle="modal" id="dialogue" data-target="#PercevalModal">
         <i class="fa fa-2x fa-comments" aria-hidden="true"></i>
@@ -39,7 +40,7 @@
     <div class="modal fade" id="PercevalModal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
         <h1 id="titre">BlackJack de Kaamelott</h1>
         <img src="img/Kaamelott_logo.png" class="logo">
-        
+
         <img src="img/perceval.png" class="perceval-avatar">
         <div class="modal-dialog perceval" role="document">
             <div class="modal-content">
@@ -190,12 +191,13 @@
         <button type="button" id="newturn" class="btn btn-secondary pull-right" data-dismiss="modal">Tour suivant</button>
     </div>
     <img src="img/bulle.png" id="passe" />
- 
+
     <div id="score">
         <p id="numerateur">0</p>
         <p id="slash">/</p>
         <p id="denominateur"> 21</p>
     </div>
+    <p id="scored">Score à battre: </p>
 
     <div class="content">
         <div class="col-10" id="gameboard">

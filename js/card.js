@@ -268,17 +268,16 @@ function dezoom() {
     .fadeIn(1000);
 }
 
-function arrowtop(){
-    $("#arrow").removeClass("bottom");
-    $("#arrow").addClass("top");
-    $("#arrowtext").text("Au tour de Perceval !")
+function arrowtop() {
+  $("#arrow").removeClass("bottom");
+  $("#arrow").addClass("top");
+  $("#arrowtext").text("Au tour de Perceval !");
 }
-function arrowbottom(){
-    $("#arrow").removeClass("top");
-    $("#arrow").addClass("bottom");
-    $("#arrowtext").text("A votre Tour !")
+function arrowbottom() {
+  $("#arrow").removeClass("top");
+  $("#arrow").addClass("bottom");
+  $("#arrowtext").text("A votre Tour !");
 }
-
 
 function moneygenerator() {
   newmoney = newmoney + 1;
@@ -356,8 +355,9 @@ function passertour() {
   }
 }
 
-
 function TourPerceval() {
+  $("#scored").show();
+  $("#scored").text("Score à battre: " + listescore[0]);
   if (listescore[1] <= listescore[0]) {
     $(".gamecard").trigger("click");
     setTimeout(function() {
@@ -394,28 +394,27 @@ $("#dialogue").trigger("click");
 clickonCard();
 
 // RESET functions
-$("#newturn").on("click", function() {
+function resetgame() {
   $(".gamecard").remove();
   $(".victory").hide();
-  arrowbottom();  
-  listescore = [0, 0];
+  $(".defeat").hide();
+  $("#scored").text("Score à battre: ");
+  $("#scored").hide();
+  arrowbottom();
   cardvisible.length = 0;
   cardactive.length = 0;
   addcard();
   joueur = 0;
   refreshscore(joueur);
+}
+$("#newturn").on("click", function() {
+  listescore = [0, 0];
+  resetgame();
 });
 
 $("#nexturn").on("click", function() {
-  $(".gamecard").remove();
-  $(".defeat").hide();
-  arrowbottom();    
   listescore[0] = 0;
-  cardvisible.length = 0;
-  cardactive.length = 0;
-  addcard();
-  joueur = 0;
-  refreshscore(joueur);
+  resetgame();
 });
 
 $("#passe").on("click", passertour);
