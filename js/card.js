@@ -116,89 +116,14 @@ var myCards = {
   51: { path: "PD.png", value: 10 },
   52: { path: "PV.png", value: 10 }
 };
-var randomItem = -1;
-var cardonboard = [];
+//var randomItem = -1;
+var cardvisible = [];
+var cardactive = [];
 var newmoney = 1;
-
-function numberofcard() {
-  var nbcard = $("div.gamecard").length;
-  console.log(nbcard);
-  return nbcard;
-}
-
-function animatecard() {
-  clicked = this.id;
-  console.log(clicked);
-
-  //Animate the card only if it's not already placed on gameboard
-  if (!$("#" + clicked).hasClass("onboard")) {
-    $("#" + clicked).addClass("grow");
-    setTimeout(function() {
-      $("#" + clicked).flip(true);
-    }, 2000);
-    var left = cardonboard.length * 4;
-    setTimeout(function() {
-      $("#" + clicked).removeClass("grow");
-      $("#" + clicked).addClass("onboard");
-      $("#" + clicked).css("left", left + "vw");
-      $("#" + clicked).removeClass("ease");
-      $("#" + clicked).addClass("ease2");
-    }, 3000);
-    setTimeout(function() {
-      $(".money").addClass("shaking");
-    }, 3200);
-    setTimeout(function() {
-      $("body *").removeClass("ease2");
-      $(".money").removeClass("shaking");
-    }, 5000);
-  }
-}
-
-function randomcard() {
-  randomItem = Math.floor(Math.random() * Object.keys(myCards).length);
-
-  while (jQuery.inArray(randomItem, cardonboard) !== -1) {
-    randomItem = Math.floor(Math.random() * Object.keys(myCards).length);
-  }
-  cardonboard.push(randomItem);
-  console.log(cardonboard);
-  return randomItem;
-}
-
-function addcard() {
-  var nbcard = numberofcard();
-  randomItem = randomcard();
-  var nextcardid = nbcard + 1;
-  $(
-    "<div id='card" +
-      nextcardid +
-      "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img src='" +
-      path +
-      myCards[randomItem]["path"] +
-      "' class='shadow' width='200px'></div></div>"
-  )
-    .hide()
-    .appendTo("#gameboard")
-    .fadeIn(1000);
-  clickonCard();
-}
-
-function zoom() {
-  clicked = this.id;
-  $("#" + clicked + " img")
-    .css("transform", "scale(1.2,1.2)")
-    .fadeIn(1000);
-}
-function dezoom() {
-  clicked = this.id;
-  $("#" + clicked + " img")
-    .css("transform", "scale(1)")
-    .fadeIn(1000);
-}
+var listescore = [0, 0];
 
 function dialogue() {
   step = step + 1;
-  console.log(step);
   if (step == 1) {
     $("#textperceval").text("Bonjour mon roi. Vous vouliez m'voir ?");
     $("#textarthur").text("Euh... Non pas particulièrement.");
@@ -258,6 +183,91 @@ function dialogue() {
   }
 }
 
+function numberofcard() {
+  var nbcard = $("div.gamecard").length;
+  return nbcard;
+}
+
+function randomcard() {
+  var randomItem = Math.floor(Math.random() * Object.keys(myCards).length) + 1;
+
+  while (jQuery.inArray(randomItem, cardactive) !== -1) {
+    randomItem = Math.floor(Math.random() * Object.keys(myCards).length) + 1;
+  }
+  console.log("RANDOM:" + randomItem);
+
+  var valeur = myCards[randomItem]["value"];
+  cardvisible.push(valeur);
+  cardactive = cardvisible.slice(0, cardvisible.length - 1);
+  console.log("Valeurs de la carte:\n " + valeur);
+  console.log("Valeurs des cartes posées:\n " + cardvisible);
+  console.log("Valeurs des cartes active:\n " + cardactive);
+  return randomItem;
+}
+
+function addcard() {
+  var nbcard = numberofcard();
+  var Item = randomcard();
+  var nextcardid = nbcard + 1;
+  $(
+    "<div id='card" +
+      nextcardid +
+      "' class='gamecard ease'><div class='front'><img src='img/back.png' width='200px'></div><div class='back'><img src='" +
+      path +
+      myCards[Item]["path"] +
+      "' class='shadow' width='200px'></div></div>"
+  )
+    .hide()
+    .appendTo("#gameboard")
+    .fadeIn(1000);
+  //Montre la bulle pour passer le tour si une carte au moins a été posée et si c'est le tour du joueur.
+  if (joueur == 0) {
+    $("#passe").show();
+  }
+  clickonCard();
+}
+
+function animateCard() {
+  clicked = this.id;
+  //console.log(clicked);
+
+  //Animate the card only if it's not already placed on gameboard
+  if (!$("#" + clicked).hasClass("onboard")) {
+    $("#" + clicked).addClass("grow");
+    setTimeout(function() {
+      $("#" + clicked).flip(true);
+    }, 2000);
+    var left = cardactive.length * 4;
+    setTimeout(function() {
+      $("#" + clicked).removeClass("grow");
+      $("#" + clicked).addClass("onboard");
+      $("#" + clicked).css("left", left + "vw");
+      $("#" + clicked).removeClass("ease");
+      $("#" + clicked).addClass("ease2");
+    }, 3000);
+    setTimeout(function() {
+      $(".money").addClass("shaking");
+    }, 3200);
+    setTimeout(function() {
+      $("body *").removeClass("ease2");
+      $(".money").removeClass("shaking");
+    }, 5000);
+  }
+}
+
+function zoom() {
+  clicked = this.id;
+  $("#" + clicked + " img")
+    .css("transform", "scale(1.2,1.2)")
+    .fadeIn(1000);
+}
+function dezoom() {
+  clicked = this.id;
+  $("#" + clicked + " img")
+    .css("transform", "scale(1)")
+    .fadeIn(1000);
+}
+
 function moneygenerator() {
   newmoney = newmoney + 1;
   var newid = "piece" + newmoney;
@@ -278,26 +288,76 @@ function moneygenerator() {
   $(".money").drags();
 }
 
-function refreshscore() {
-  if (cardonboard.length > 1) {
-    var lastcardplayed = cardonboard[cardonboard.length -2]; //La dernière carte de la liste correspondant à celle placée sur le plateau mais non retournée.
-    console.log(lastcardplayed);
-    score = score + myCards[lastcardplayed]["value"];
+function refreshscore(joueur) {
+  console.log("Joueur=" + joueur);
+  if (cardactive.length > 0) {
+    var lastcardplayed = cardactive[-1];
+    score = 0;
+    for (var i = 0; i < cardactive.length; i++) {
+      score = score + cardactive[i];
+    }
     $("#numerateur").text(score);
+    listescore[joueur] = score;
+    console.log("Score:" + listescore);
+    VictoryDefeat();
+  } else {
+    listescore[joueur] = 0;
+    $("#numerateur").text(listescore[joueur]);
   }
-  if (score > 21) {
+}
+
+function VictoryDefeat() {
+  if (listescore[0] > 21) {
+    defaite();
+  } else if (listescore[1] > 21) {
+    victoire();
+  } else if (listescore[1] > listescore[0]) {
+    defaite();
+  }
+}
+
+function victoire() {
+  victory = 1;
+  $(".victory").show();
+  return;
+}
+
+function defaite() {
+  defeat = 1;
+  $(".defeat").show();
+  return;
+}
+
+function passertour() {
+  if (joueur == 0) {
+    joueur = 1;
+    $("#passe").hide();
+    $(".gamecard").remove();
+    cardvisible.length = 0;
+    cardactive.length = 0;
+    addcard();
+    refreshscore(joueur);
+    TourPerceval();
+  } else {
+    joueur = 0;
+  }
+}
+function TourPerceval() {
+  if (listescore[1] <= listescore[0]) {
+    $(".gamecard").trigger("click");
     setTimeout(function() {
-      $(".defeat").show();
-      $(".onboard").remove();
-    }, 2000);
+      TourPerceval();
+    }, 4000);
   }
 }
 
 function clickonCard() {
-  $(".gamecard").on("click", animatecard);
-  $(".gamecard").on("flip:done", addcard);
+  defeat = 0;
+  victory = 0;
+  $(".gamecard").on("click", animateCard);
   $(".gamecard").on("mousedown", zoom);
   $(".gamecard").on("mouseup", dezoom);
+  $(".gamecard").on("flip:done", addcard);
   $(".back").drags();
   $(".money").drags();
   $(function($) {
@@ -305,12 +365,40 @@ function clickonCard() {
       trigger: "manual"
     });
   });
-  refreshscore();
+  refreshscore(joueur);
 }
 
 //MAIN
+var joueur = 0; //0 is the player  -> 1 is the computer
+var victory = 0;
+var defeat = 0;
 $("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
 $("#nextdial").on("click", dialogue);
 $("h1").on("click", moneygenerator);
 $("#dialogue").trigger("click");
 clickonCard();
+
+// RESET functions
+$("#newturn").on("click", function() {
+  $(".gamecard").remove();
+  $(".victory").hide();
+  listescore = [0, 0];
+  cardvisible.length = 0;
+  cardactive.length = 0;
+  addcard();
+  joueur = 0;
+  refreshscore(joueur);
+});
+
+$("#nexturn").on("click", function() {
+  $(".gamecard").remove();
+  $(".defeat").hide();
+  listescore[0] = 0;
+  cardvisible.length = 0;
+  cardactive.length = 0;
+  addcard();
+  joueur = 0;
+  refreshscore(joueur);
+});
+
+$("#passe").on("click", passertour);

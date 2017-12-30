@@ -136,12 +136,20 @@ body {
 
 .defeat {
   position: fixed;
-  top: 10vh;
+  top: 30vh;
   width: 70vw;
   left: 15vw;
   z-index: 99;
   display: none;
 }
+.victory {
+    position: fixed;
+    top: 15vh;
+    width: 50vw;
+    left: 25vw;
+    z-index: 99;
+    display: none;
+  }
 #score {
   font-family: chalk;
   font-size: 10em;
@@ -257,31 +265,25 @@ body {
   }
 }
 
-.cardock {
-  perspective: 400px;
-  position: absolute;
-  transform-style: preserve-3d;
-  will-change: transform;
-  user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
 
-.cardock-image {
-  pointer-events: none;
-  transform-style: preserve-3d;
-  will-change: transform;
-  user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
 
 #textperceval, #textarthur{
     font-size: x-large;
+}
+#passe{
+    width: 200px;
+    position: fixed;
+    bottom: -40px;
+    left: 30vh;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    display: none;
+}
+#passe:hover{
+    bottom: 0px;    
+    width: 300px;
+    -webkit-filter: drop-shadow(7px 7px 7px black);
+    filter: drop-shadow(7px 7px 7px black);
 }
