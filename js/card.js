@@ -236,7 +236,7 @@ function animateCard() {
     setTimeout(function() {
       $("#" + clicked).flip(true);
     }, 2000);
-    var left = cardactive.length * 4;
+    var left = 15+cardactive.length * 4;
     setTimeout(function() {
       $("#" + clicked).removeClass("grow");
       $("#" + clicked).addClass("onboard");
@@ -329,12 +329,14 @@ function VictoryDefeat() {
 function victoire() {
   victory = 1;
   $(".victory").show();
+  $(".victory").animate({top: '0vh'});  
   return;
 }
 
 function defaite() {
   defeat = 1;
   $(".defeat").show();
+  $(".defeat").animate({top: '0vh'});
   return;
 }
 
