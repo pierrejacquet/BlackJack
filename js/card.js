@@ -276,7 +276,7 @@ function arrowtop(){
 function arrowbottom(){
     $("#arrow").removeClass("top");
     $("#arrow").addClass("bottom");
-    $("#arrowtext").text("A votre Tour<br> Piochez une carte !")
+    $("#arrowtext").text("A votre Tour !")
 }
 
 
