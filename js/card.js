@@ -116,7 +116,6 @@ var myCards = {
   51: { path: "PD.png", value: 10 },
   52: { path: "PV.png", value: 10 }
 };
-//var randomItem = -1;
 var cardvisible = [];
 var cardactive = [];
 var newmoney = 1;
@@ -191,7 +190,7 @@ function numberofcard() {
 function randomcard() {
   var randomItem = Math.floor(Math.random() * Object.keys(myCards).length) + 1;
 
-  while (jQuery.inArray(randomItem, cardactive) !== -1) {
+  while (jQuery.inArray(randomItem, cardvisible) !== -1) {
     randomItem = Math.floor(Math.random() * Object.keys(myCards).length) + 1;
   }
   console.log("RANDOM:" + randomItem);
