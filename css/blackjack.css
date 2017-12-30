@@ -54,7 +54,7 @@ body {
   -webkit-filter: blur(5px); /* Chrome, Safari, Opera */
   filter: blur(5px);
 }
-.modal-dialog{
+#rules .modal-dialog{
     max-width: 50vw!important;
 }
 .perceval {
