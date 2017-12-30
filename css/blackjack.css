@@ -136,20 +136,62 @@ body {
 
 .defeat {
   position: fixed;
-  top: 30vh;
+  top: 10vh;
   width: 70vw;
   left: 15vw;
   z-index: 99;
   display: none;
 }
 .victory {
-    position: fixed;
-    top: 15vh;
-    width: 50vw;
-    left: 25vw;
-    z-index: 99;
-    display: none;
+  position: fixed;
+  top: 0vh;
+  width: 40vw;
+  left: 30vw;
+  z-index: 99;
+  display: none;
+}
+
+#arrow {
+  position: fixed;
+  margin-left: 45vw;
+  margin-right: auto;
+  width: 10vw;
+
+  -webkit-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  animation: glow 1000ms ease-out infinite alternate;
+}
+#arrow.top {
+  top: 0px;
+}
+#arrow.bottom {
+  bottom: 0px;
+}
+#arrow p {
+  text-align: center;
+}
+#arrow img {
+  margin-left: 4vw;
+  width: 2vw;
+}
+#arrow.top img {
+  transform: rotate(180deg);
+}
+
+@keyframes glow {
+  0% {
+    -webkit-filter: drop-shadow(0px 0px 8px rgb(255, 200, 0));
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
+  100% {
+    -webkit-filter: drop-shadow(0px 0px 0px rgba(255, 252, 154, 0.8));
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
 #score {
   font-family: chalk;
   font-size: 10em;
@@ -265,25 +307,24 @@ body {
   }
 }
 
-
-
-#textperceval, #textarthur{
-    font-size: x-large;
+#textperceval,
+#textarthur {
+  font-size: x-large;
 }
-#passe{
-    width: 200px;
-    position: fixed;
-    bottom: -40px;
-    left: 30vh;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    display: none;
+#passe {
+  width: 200px;
+  position: fixed;
+  bottom: -40px;
+  left: 30vh;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: none;
 }
-#passe:hover{
-    bottom: 0px;    
-    width: 300px;
-    -webkit-filter: drop-shadow(7px 7px 7px black);
-    filter: drop-shadow(7px 7px 7px black);
+#passe:hover {
+  bottom: 0px;
+  width: 300px;
+  -webkit-filter: drop-shadow(7px 7px 7px black);
+  filter: drop-shadow(7px 7px 7px black);
 }

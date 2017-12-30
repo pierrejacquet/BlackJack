@@ -268,6 +268,18 @@ function dezoom() {
     .fadeIn(1000);
 }
 
+function arrowtop(){
+    $("#arrow").removeClass("bottom");
+    $("#arrow").addClass("top");
+    $("#arrowtext").text("Au tour de Perceval !")
+}
+function arrowbottom(){
+    $("#arrow").removeClass("top");
+    $("#arrow").addClass("bottom");
+    $("#arrowtext").text("A votre Tour !")
+}
+
+
 function moneygenerator() {
   newmoney = newmoney + 1;
   var newid = "piece" + newmoney;
@@ -337,11 +349,14 @@ function passertour() {
     cardactive.length = 0;
     addcard();
     refreshscore(joueur);
+    arrowtop();
     TourPerceval();
   } else {
     joueur = 0;
   }
 }
+
+
 function TourPerceval() {
   if (listescore[1] <= listescore[0]) {
     $(".gamecard").trigger("click");
@@ -382,6 +397,7 @@ clickonCard();
 $("#newturn").on("click", function() {
   $(".gamecard").remove();
   $(".victory").hide();
+  arrowbottom();  
   listescore = [0, 0];
   cardvisible.length = 0;
   cardactive.length = 0;
@@ -393,6 +409,7 @@ $("#newturn").on("click", function() {
 $("#nexturn").on("click", function() {
   $(".gamecard").remove();
   $(".defeat").hide();
+  arrowbottom();    
   listescore[0] = 0;
   cardvisible.length = 0;
   cardactive.length = 0;
