@@ -308,6 +308,9 @@ function refreshscore(joueur) {
     for (var i = 0; i < cardactive.length; i++) {
       score = score + cardactive[i];
     }
+    if(cardactive[-1]==11 && score > 21){
+        score = score - 10
+    }
     $("#numerateur").text(score);
     listescore[joueur] = score;
     console.log("Score:" + listescore);
@@ -332,6 +335,7 @@ function victoire() {
   victory = 1;
   $(".victory").show();
   $(".victory").animate({top: '0vh'});
+  moneygenerator();
   return;
 }
 
