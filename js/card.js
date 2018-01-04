@@ -308,13 +308,9 @@ function refreshscore(joueur) {
     for (var i = 0; i < cardactive.length; i++) {
       score = score + cardactive[i];
     }
-    console.log("Score :" +score);
-    console.log("Dernière carte :" + lastcardplayed);
     if(lastcardplayed==11 && score > 21){
         cardvisible[cardvisible.length-2]=1;
         score = score - 10;
-        console.log("Score :" +score);
-        console.log("Dernière carte :" + lastcardplayed);
     }
     $("#numerateur").text(score);
     listescore[joueur] = score;
@@ -327,7 +323,9 @@ function refreshscore(joueur) {
 }
 
 function VictoryDefeat() {
-  if (listescore[0] > 21) {
+  if (listescore[0]==21){
+    victoire();
+  } else if (listescore[0] > 21) {
     defaite();
   } else if (listescore[1] > 21) {
     victoire();
@@ -339,6 +337,7 @@ function VictoryDefeat() {
 function victoire() {
   victory = 1;
   $(".victory").show();
+  $("#passe").hide();
   $(".victory").animate({top: '0vh'});
   moneygenerator();
   return;
@@ -347,6 +346,7 @@ function victoire() {
 function defaite() {
   defeat = 1;
   $(".defeat").show();
+  $("#passe").hide();
   $(".defeat").animate({top: '0vh'});
   return;
 }
