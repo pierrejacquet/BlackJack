@@ -378,14 +378,13 @@ i small {
 
 #rules .modal-body h4{
     font-family: metamorphous;
-    margin-top: 0.5em;
+    margin-top: 25px;
     text-decoration: underline;
   }
-#percevalrules{color: steelblue;}
+.percevalrules{color: steelblue;}
 
-#arthurules{color: firebrick;}
+.arthurules{color: firebrick;}
 
 #rules .modal-body p{
-  margin-top:0.1em;
-  margin-bottom:0.1em;
+  line-height: 7px;
 }
