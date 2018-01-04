@@ -222,7 +222,7 @@ function addcard() {
     .appendTo("#gameboard")
     .fadeIn(1000);
   //Montre la bulle pour passer le tour si une carte au moins a été posée et si c'est le tour du joueur.
-  if (joueur == 0) {
+  if (joueur == 0 && cardactive.length > 0) {
     $("#passe").show();
   }
   clickonCard();
@@ -308,6 +308,7 @@ function refreshscore(joueur) {
     for (var i = 0; i < cardactive.length; i++) {
       score = score + cardactive[i];
     }
+    //modifie la valeur de l'as si jamais il fait dépasser 21
     if(lastcardplayed==11 && score > 21){
         cardvisible[cardvisible.length-2]=1;
         score = score - 10;
@@ -336,7 +337,7 @@ function VictoryDefeat() {
 
 function victoire() {
   victory = 1;
-  $(".victory").show();
+  $(".victory").delay(1000).show(100);
   $("#passe").hide();
   $(".victory").animate({top: '0vh'});
   moneygenerator();
@@ -345,7 +346,7 @@ function victoire() {
 
 function defaite() {
   defeat = 1;
-  $(".defeat").show();
+  $(".defeat").delay(1000).show(100);
   $("#passe").hide();
   $(".defeat").animate({top: '0vh'});
   return;
