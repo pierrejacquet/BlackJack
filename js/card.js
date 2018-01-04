@@ -303,13 +303,18 @@ function moneygenerator() {
 function refreshscore(joueur) {
   console.log("Joueur=" + joueur);
   if (cardactive.length > 0) {
-    var lastcardplayed = cardactive[-1];
+    var lastcardplayed = cardactive[cardactive.length-1];
     score = 0;
     for (var i = 0; i < cardactive.length; i++) {
       score = score + cardactive[i];
     }
-    if(cardactive[-1]==11 && score > 21){
-        score = score - 10
+    console.log("Score :" +score);
+    console.log("Dernière carte :" + lastcardplayed);
+    if(lastcardplayed==11 && score > 21){
+        cardvisible[cardvisible.length-2]=1;
+        score = score - 10;
+        console.log("Score :" +score);
+        console.log("Dernière carte :" + lastcardplayed);
     }
     $("#numerateur").text(score);
     listescore[joueur] = score;
