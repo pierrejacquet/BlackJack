@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 
@@ -12,7 +12,7 @@
     <meta name="author" content="">
 
     <!-- Favicon -->
-    <link rel="icon" href="">
+    <link rel="icon" href="img/favicon.ico">
 
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -28,7 +28,7 @@
     <div id="arrow" class="bottom">
         <p id="arrowtext">A votre Tour
             <br> Piochez une carte !</p>
-        <img class="" src="img/arrow.png" />
+        <img class="" src="img/arrow.png" alt="flèches indiquant le tour de jeu" />
     </div>
 
     <!-- Button trigger modal dialog -->
@@ -37,15 +37,15 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="PercevalModal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+    <div class="modal fade" id="PercevalModal" tabindex="-1" role="dialog" aria-hidden="true">
         <h1 id="titre">BlackJack de Kaamelott</h1>
-        <img src="img/Kaamelott_logo.png" class="logo">
+        <img src="img/Kaamelott_logo.png" class="logo" alt="Logo de Kaamelott">
 
-        <img src="img/perceval.png" class="perceval-avatar">
+        <img src="img/perceval.png" class="perceval-avatar" alt="Perceval">
         <div class="modal-dialog perceval" role="document">
             <div class="modal-content">
                 <div class="modal-header noborder">
-                    <h5 class="modal-title" id="exampleModalLabel">Perceval</h5>
+                    <h5 class="modal-title">Perceval</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -60,11 +60,11 @@
             </div>
         </div>
 
-        <img src="img/arthurnobg.png" class="arthur-avatar">
+        <img src="img/arthurnobg.png" class="arthur-avatar" alt="Arthur">
         <div class="modal-dialog arthur" role="document">
             <div class="modal-content">
                 <div class="modal-header noborder">
-                    <h5 class="modal-title" id="exampleModalLabel">Arthur</h5>
+                    <h5 class="modal-title">Arthur</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -85,20 +85,20 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="Modal Règles" aria-hidden="true">
+    <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Règles du BlackJack de Perceval</h3>
+                    <h3 class="modal-title">Règles du BlackJack de Perceval</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div id="rules" class="modal-body">
+                <div class="modal-body">
                     <h4 class="percevalrules">Perceval:</h4>
                     <p>Nous avons adapté les règles au niveau intellectuel des pécores de l'auberge.
-                        </br>Et je dois dire qu'ils s'en sortent pas trop mal !
-                        </br>Le but du jeu est simple : battre le crouton.
+                        <br>Et je dois dire qu'ils s'en sortent pas trop mal !
+                        <br>Le but du jeu est simple : battre le crouton.
                     </p>
 
                     <h4 class="arthurules">Arthur:</h4>
@@ -112,7 +112,7 @@
 
                     <h4 class="percevalrules">Perceval:</h4>
                     <p>Non non ma croupe va bien Sire.
-                        </br>Je voulais parler de moi, vous devez me battre.
+                        <br>Je voulais parler de moi, vous devez me battre.
                     </p>
 
                     <h4 class="arthurules">Arthur:</h4>
@@ -132,12 +132,12 @@
 
                     <h4 class="percevalrules">Perceval:</h4>
                     <p>Un As peut valoir 1 ou 11.
-                        </br>Les "bûches", les 10 et les têtes, valent 10.
-                        </br>Les autres cartes ont leur propre valeur.
-                        </br>Vous devez vous rapprocher le plus possible de 21 voire l'atteindre.
-                        </br>Si vous dépasser 21 ou si je vous bats en faisant un score supérieur au votre vous perdez.
-                        </br>En cas d'égalité, je vous laisse gagner la manche.
-                        </br>Vous gagnez lorsque vous faites 21 ou lorsque vous me battez avec un score supérieur.
+                        <br>Les "bûches", les 10 et les têtes, valent 10.
+                        <br>Les autres cartes ont leur propre valeur.
+                        <br>Vous devez vous rapprocher le plus possible de 21 voire l'atteindre.
+                        <br>Si vous dépasser 21 ou si je vous bats en faisant un score supérieur au votre vous perdez.
+                        <br>En cas d'égalité, je vous laisse gagner la manche.
+                        <br>Vous gagnez lorsque vous faites 21 ou lorsque vous me battez avec un score supérieur.
                     </p>
 
                     <h4 class="arthurules">Arthur:</h4>
@@ -145,8 +145,8 @@
 
                     <h4 class="percevalrules">Perceval:</h4>
                     <p>Justement, il n'y en a pas Sire!
-                        </br>Et, pour pimenter le jeu on va jouer avec quelques écus!
-                        </br>Si vous perdez je récupère l'écu que vous misez, si vous gagnez vous en récupérez deux !
+                        <br>Et, pour pimenter le jeu on va jouer avec quelques écus!
+                        <br>Si vous perdez je récupère l'écu que vous misez, si vous gagnez vous en récupérez deux !
                     </p>
 
                     <h4 class="arthurules">Arthur:</h4>
@@ -166,17 +166,17 @@
 
 
     <div class="defeat">
-        <img src="img/defeat.png" width="100%" />
+        <img src="img/defeat.png" width="100%" alt="Défaite" />
         <button type="button" id="nexturn" class="btn btn-secondary pull-right" data-dismiss="modal">Tour suivant</button>
     </div>
     <div class="victory">
-        <img src="img/victory.png" width="100%" />
+        <img src="img/victory.png" width="100%" alt="Victoire" />
         <button type="button" id="newturn" class="btn btn-secondary pull-right" data-dismiss="modal">Tour suivant</button>
     </div>
-    <img src="img/bulle.png" id="passe" />
+    <img src="img/bulle.png" id="passe" alt="Passer le tour" />
 
     <div class="bourse">
-        <img src="img/bourse.png" width="100%" />
+        <img src="img/bourse.png" width="100%" alt="Bourse" />
         <p id="ecu">Ecu:
             <span id="argent">5</span>
         </p>
@@ -192,18 +192,18 @@
     <div class="content">
         <div class="col-10" id="gameboard">
 
-            <img src="img/back.png" width="200px" id="stack">
+            <img src="img/back.png" width="200px" id="stack" alt="Paquet de carte">
             <div id="card1" class="gamecard ease">
                 <div class="front">
-                    <img src="img/back.png" width="200px">
+                    <img src="img/back.png" width="200px" alt="Dos de carte">
                 </div>
                 <div class="back">
-                    <img src="" id="cartestarter" class="shadow" width="200px">
+                    <img id="cartestarter" class="shadow" width="200px" alt="Carte face visible">
                 </div>
             </div>
 
             <div id="ARGENTTTT">
-                <img src="img/piece.png" class="money" id="piece1">
+                <img src="img/piece.png" class="money" id="piece1" alt="pièce de monnaie">
             </div>
 
 
