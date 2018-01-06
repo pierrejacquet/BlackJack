@@ -238,12 +238,16 @@ function addcard() {
   //Montre la bulle pour passer le tour si une carte au moins a été posée et si c'est le tour du joueur.
   if (joueur == 0 && cardactive.length > 0) {
     $("#passe").show();
+  }
+  if (joueur == 0 && cardactive.length == 0) {
     var randomcardperceval=randomcard();
     listescore[1]=cardvisible[-1]
     cardvisible.splice(-1,1);
     cardactive.splice(-1,1);
     $("#carteperceval").attr("src","img/card/"+myCards[randomcardperceval]["path"]);   
+  
   }
+  
   clickonCard();
 }
 
