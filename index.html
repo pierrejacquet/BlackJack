@@ -79,7 +79,9 @@
 
     <!-- Button trigger modal rules -->
     <button type="button" class="dialoguebtn" data-toggle="modal" data-target="#rules">
-        <i class="fa fa-2x fa-book" aria-hidden="true"><small>Les Règles</small></i>
+        <i class="fa fa-2x fa-book" aria-hidden="true">
+            <small>Les Règles</small>
+        </i>
     </button>
 
     <!-- Modal -->
@@ -92,62 +94,62 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div id = "rules" class="modal-body">
-                <h4 class = "percevalrules">Perceval:</h4>
-                <p>Nous avons adapté les règles au niveau intellectuel des pécores de l'auberge.
-                </br>Et je dois dire qu'ils s'en sortent pas trop mal !
-                </br>Le but du jeu est simple : battre le crouton.
-                </p>
+                <div id="rules" class="modal-body">
+                    <h4 class="percevalrules">Perceval:</h4>
+                    <p>Nous avons adapté les règles au niveau intellectuel des pécores de l'auberge.
+                        </br>Et je dois dire qu'ils s'en sortent pas trop mal !
+                        </br>Le but du jeu est simple : battre le crouton.
+                    </p>
 
-                <h4 class = "arthurules">Arthur:</h4>
+                    <h4 class="arthurules">Arthur:</h4>
                     <p>Le crou-quoi ?</p>
 
-                <h4 class = "percevalrules">Perceval:</h4>
+                    <h4 class="percevalrules">Perceval:</h4>
                     <p>Le crapeau, 'fin celui qui tire les ficelles !</p>
 
-                <h4 class = "arthurules">Arthur:</h4>
+                    <h4 class="arthurules">Arthur:</h4>
                     <p>Qui tire les ficelles ...? Le croupier vous voulez dire ?</p>
 
-                <h4 class = "percevalrules">Perceval:</h4>
+                    <h4 class="percevalrules">Perceval:</h4>
                     <p>Non non ma croupe va bien Sire.
-                    </br>Je voulais parler de moi, vous devez me battre.
+                        </br>Je voulais parler de moi, vous devez me battre.
                     </p>
 
-                <h4 class = "arthurules">Arthur:</h4>
+                    <h4 class="arthurules">Arthur:</h4>
                     <p>Vous battre ? Ça je n'y manquerai pas, avec ma main dans votre mouille!</p>
 
-                <h4 class = "percevalrules">Perceval:</h4>
+                    <h4 class="percevalrules">Perceval:</h4>
                     <p>Attendez, j'n'ai même pas présenté les règles!</p>
 
-                <h4 class = "arthurules">Arthur:</h4>
+                    <h4 class="arthurules">Arthur:</h4>
                     <p>Et bien, dépêchez-vous, et faites bien attention à ce que vous allez baver.</p>
 
-                <h4 class = "percevalrules">Perceval:</h4>
+                    <h4 class="percevalrules">Perceval:</h4>
                     <p>Tout ce qu'il y à savoir faire c'est compter, c'est simple comme bonjour!</p>
 
-                <h4 class = "arthurules">Arthur:</h4>
+                    <h4 class="arthurules">Arthur:</h4>
                     <p>Jusque là, je vous suis.</p>
 
-                <h4 class = "percevalrules">Perceval:</h4>
-                <p>Un As peut valoir 1 ou 11.
-                </br>Les "bûches", les 10 et  les têtes, valent 10.
-                </br>Les autres cartes ont leur propre valeur.
-                </br>Vous devez vous rapprocher le plus possible de 21 voire l'atteindre.
-                </br>Si vous dépasser 21 ou si je vous bats en faisant un score  supérieur au votre vous perdez.
-                </br>En cas d'égalité, je vous laisse gagner la manche.
-                </br>Vous gagnez lorsque vous faites 21 ou lorsque vous me battez avec un score supérieur.
-                </p>
-
-                <h4 class = "arthurules">Arthur:</h4>
-                    <p>Cela m'a l'air plutôt simple. Où est l'entourloupe?</p>
-
-                <h4 class = "percevalrules">Perceval:</h4>
-                    <p>Justement, il n'y en a pas Sire!
-                    </br>Et, pour pimenter le jeu vous êtes libre de parier quelques écus!
-                    </br>Si vous perdez je récupère votre mise, si vous gagnez vous la doublez !
+                    <h4 class="percevalrules">Perceval:</h4>
+                    <p>Un As peut valoir 1 ou 11.
+                        </br>Les "bûches", les 10 et les têtes, valent 10.
+                        </br>Les autres cartes ont leur propre valeur.
+                        </br>Vous devez vous rapprocher le plus possible de 21 voire l'atteindre.
+                        </br>Si vous dépasser 21 ou si je vous bats en faisant un score supérieur au votre vous perdez.
+                        </br>En cas d'égalité, je vous laisse gagner la manche.
+                        </br>Vous gagnez lorsque vous faites 21 ou lorsque vous me battez avec un score supérieur.
                     </p>
 
-                <h4 class = "arthurules">Arthur:</h4>
+                    <h4 class="arthurules">Arthur:</h4>
+                    <p>Cela m'a l'air plutôt simple. Où est l'entourloupe?</p>
+
+                    <h4 class="percevalrules">Perceval:</h4>
+                    <p>Justement, il n'y en a pas Sire!
+                        </br>Et, pour pimenter le jeu on va jouer avec quelques écus!
+                        </br>Si vous perdez je récupère l'écu que vous misez, si vous gagnez vous en récupérez deux !
+                    </p>
+
+                    <h4 class="arthurules">Arthur:</h4>
                     <p>J'crois que j'ai bien tout pigé. Allons-y !</p>
 
 
@@ -172,10 +174,12 @@
         <button type="button" id="newturn" class="btn btn-secondary pull-right" data-dismiss="modal">Tour suivant</button>
     </div>
     <img src="img/bulle.png" id="passe" />
-    
+
     <div class="bourse">
         <img src="img/bourse.png" width="100%" />
-        <p id="ecu">Ecu: <span id="argent">5</span></p>
+        <p id="ecu">Ecu:
+            <span id="argent">5</span>
+        </p>
     </div>
 
     <div id="score">
@@ -198,9 +202,9 @@
                 </div>
             </div>
 
-    <div id="ARGENTTTT">
-            <img src="img/piece.png" class="money" id="piece1">
-    </div>
+            <div id="ARGENTTTT">
+                <img src="img/piece.png" class="money" id="piece1">
+            </div>
 
 
         </div>
@@ -213,7 +217,6 @@
 
     <!-- jQuery -->
     <script src="js/jquery-3.2.1.min.js"></script>
-    <!-- <script src="js/jquery-ui-min.js"></script> -->
     <!-- Tether -->
     <script src="js/tether.min.js"></script>
 
@@ -221,16 +224,12 @@
     <script src="js/bootstrap.min.js"></script>
 
 
-
-    <!-- Parralax|Tilt effect -->
-    <script src="js/tilt.js"></script>
-
-    <!-- Flip card Script CDN -->
+    <!-- Flip card Script credit: http://nnattawat.github.io/flip/ -->
     <script src="js/jquery.flip.min.js"></script>
 
 
-    <!-- Card drag -->
-    <script src="js/card.js"></script>
+    <!-- BlackJack script -->
+    <script src="js/game.js"></script>
 
 
 </body>

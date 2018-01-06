@@ -1,6 +1,5 @@
 var step = 1;
 var path = "img/card/";
-var score = 0;
 
 var myCards = {
   1: { path: "C2.png", value: 2 },
@@ -56,15 +55,17 @@ var myCards = {
   51: { path: "PD.png", value: 10 },
   52: { path: "PV.png", value: 10 }
 };
+
 var cardsortie = [];
 var cardvisible = [];
 var cardactive = [];
-var newmoney = 1;
-var argent = 2;
-var listescore = [0, 0];
-var joueur = 0; //0 is the player  -> 1 is the computer
+var idmoney = 1;
+var argent = 3;
+var joueur = 0; // 0 is the player  -> 1 is the computer
+var score = 0;
+var listescore = [0, 0]; // index0: player score, index1: computer score
 
-// DRAG FUNCTION
+// DRAG FUNCTION: adapted from https://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
 (function($) {
   $.fn.drags = function(opt) {
     opt = $.extend(
@@ -123,6 +124,8 @@ var joueur = 0; //0 is the player  -> 1 is the computer
       });
   };
 })(jQuery);
+
+
 
 function dialogue() {
   step = step + 1;
@@ -196,17 +199,21 @@ function randomcard() {
   while (jQuery.inArray(randomItem, cardsortie) !== -1) {
     randomItem = Math.floor(Math.random() * Object.keys(myCards).length) + 1;
   }
-  console.log("RANDOM:" + randomItem);
+  //console.log("RANDOM:" + randomItem);
 
   var valeur = myCards[randomItem]["value"];
   cardsortie.push(randomItem);
   cardvisible.push(valeur);
   cardactive = cardvisible.slice(0, cardvisible.length - 1);
-  console.log("Valeurs de la carte:\n " + valeur);
-  console.log("Valeurs des cartes posées:\n " + cardvisible);
-  console.log("Valeurs des cartes active:\n " + cardactive);
+  //console.log("Valeurs de la carte:\n " + valeur);
+  //console.log("Valeurs des cartes posées:\n " + cardvisible);
+  //console.log("Valeurs des cartes active:\n " + cardactive);
   return randomItem;
 }
+
+/*
+*  Animations
+*/
 
 function addcard() {
   var nbcard = numberofcard();
@@ -232,8 +239,6 @@ function addcard() {
 
 function animateCard() {
   clicked = this.id;
-  //console.log(clicked);
-
   //Animate the card only if it's not already placed on gameboard
   if (!$("#" + clicked).hasClass("onboard")) {
     $("#" + clicked).addClass("grow");
@@ -282,9 +287,14 @@ function arrowbottom() {
   $("#arrowtext").text("A votre Tour !");
 }
 
+/*
+*  MONEY
+*/
+
+//Generate a token at a random pos in a predefined area of the screen.
 function moneygenerator() {
-  newmoney = newmoney + 1;
-  var newid = "piece" + newmoney;
+  idmoney = idmoney + 1;
+  var newid = "piece" + idmoney;
   $("#ARGENTTTT").append(
     '<img src="img/piece.png" class="money" id="' + newid + '">'
   );
@@ -317,6 +327,19 @@ function troudanslabourse() {
       $(this).remove();
     });
 }
+function updatemoney() {
+  if (argent <= 0) {
+    var pret = -argent + 1;
+    $("#argent").text("Le tavernier vous prête : " + pret);
+  } else {
+    $("#argent").text(argent);
+  }
+}
+
+
+/*
+*  Victory or Defeat functions
+*/
 
 function refreshscore(joueur) {
   console.log("Joueur=" + joueur);
@@ -326,14 +349,14 @@ function refreshscore(joueur) {
     for (var i = 0; i < cardactive.length; i++) {
       score = score + cardactive[i];
     }
-    //modifie la valeur de l'as si jamais il fait dépasser 21
+    //modifie la valeur de l'as si jamais il fait dépasser 21 de score
     if (lastcardplayed == 11 && score > 21) {
       cardvisible[cardvisible.length - 2] = 1;
       score = score - 10;
     }
     $("#numerateur").text(score);
     listescore[joueur] = score;
-    console.log("Score:" + listescore);
+    console.log("Score - Joueur: " + listescore[0]+"  - Ordinateur: "+listescore[1]);
     VictoryDefeat();
   } else {
     listescore[joueur] = 0;
@@ -341,6 +364,7 @@ function refreshscore(joueur) {
   }
 }
 
+// Test Victory and Defeat conditions!!! 
 function VictoryDefeat() {
   if (listescore[0] == 21) {
     victoire();
@@ -359,8 +383,11 @@ function victoire() {
     .show(100);
   $("#passe").hide();
   $(".victory").animate({ top: "0vh" });
-  moneygenerator();
   argent++;
+  if (argent>0){
+    moneygenerator();
+  }
+  
   updatemoney();
   return;
 }
@@ -371,20 +398,16 @@ function defaite() {
     .show(100);
   $("#passe").hide();
   $(".defeat").animate({ top: "0vh" });
-  troudanslabourse();
   argent--;
+  troudanslabourse();
   updatemoney();
   return;
 }
 
-function updatemoney() {
-  if (argent <= 0) {
-    var pret = -argent + 1;
-    $("#argent").text("Le tavernier vous prête : " + pret);
-  } else {
-    $("#argent").text(argent);
-  }
-}
+/*
+*  Change player
+*/
+
 function passertour() {
   if (joueur == 0) {
     joueur = 1;
@@ -442,25 +465,31 @@ function resetgame() {
   refreshscore(joueur);
 }
 
+
+
 //MAIN
+function readyFn( jQuery ) {
+  $("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
+  $("#nextdial").on("click", dialogue);
+  $("h1").on("click", moneygenerator);
+  moneystarter(argent);
+  $("#argent").text(argent);
+  
+  $("#dialogue").trigger("click");
+  clickonCard();
+  
+  $("#newturn").on("click", function() {
+    listescore = [0, 0];
+    resetgame();
+  });
+  
+  $("#nexturn").on("click", function() {
+    listescore[0] = 0;
+    resetgame();
+  });
+  
+  $("#passe").on("click", passertour);  
+}
 
-$("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
-$("#nextdial").on("click", dialogue);
-$("h1").on("click", moneygenerator);
-moneystarter(argent);
-$("#argent").text(argent);
+$( document ).ready( readyFn );
 
-$("#dialogue").trigger("click");
-clickonCard();
-
-$("#newturn").on("click", function() {
-  listescore = [0, 0];
-  resetgame();
-});
-
-$("#nexturn").on("click", function() {
-  listescore[0] = 0;
-  resetgame();
-});
-
-$("#passe").on("click", passertour);

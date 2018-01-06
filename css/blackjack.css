@@ -159,8 +159,7 @@ body {
   bottom: 6vh;
   width: 200px;
   left: 250px;
-  z-index: 99;
-
+  z-index: -1;
 }
 .defeat {
   position: fixed;
@@ -256,13 +255,14 @@ body {
 .money {
   position: absolute;
   width: 100px;
+  z-index: 0;
 }
 #piece1 {
   position: absolute;
   top: 70vh;
   right: 10vh;
 }
-#ecu{
+#ecu {
   font-family: metamorphous;
   color: rgba(254, 249, 249, 0.64);
 }
@@ -376,16 +376,19 @@ i small {
   filter: drop-shadow(7px 7px 7px black);
 }
 
-#rules .modal-body h4{
-    font-family: metamorphous;
-    margin-top: 25px;
-    text-decoration: underline;
-  }
-.percevalrules{color: steelblue;}
+#rules .modal-body h4 {
+  font-family: metamorphous;
+  margin-top: 25px;
+  text-decoration: underline;
+}
+.percevalrules {
+  color: steelblue;
+}
 
-.arthurules{color: firebrick;}
+.arthurules {
+  color: firebrick;
+}
 
-#rules .modal-body p{
-
+#rules .modal-body p {
   line-height: 20px;
 }
