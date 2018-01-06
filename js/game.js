@@ -243,7 +243,6 @@ function addcard() {
   if (joueur == 0 && cardactive.length <= 1) {
     var randomcardperceval = randomcard();
     listescore[1] = myCards[randomcardperceval]["value"];
-    console.log(listescore[1]);
     cardvisible.splice(-1, 1);
     cardactive.splice(-1, 1);
     $("#carteperceval img").attr(
@@ -407,7 +406,6 @@ function victoire() {
     .show(100);
   $("#passe").hide();
   $(".victory").animate({ top: "0vh" });
-  argent++;
   argent++;
   if (argent > 1) {
     moneygenerator();
