@@ -210,9 +210,9 @@ function randomcard() {
   cardsortie.push(randomItem);
   cardvisible.push(valeur);
   cardactive = cardvisible.slice(0, cardvisible.length - 1);
-  //console.log("Valeurs de la carte:\n " + valeur);
-  //console.log("Valeurs des cartes posées:\n " + cardvisible);
-  //console.log("Valeurs des cartes active:\n " + cardactive);
+  console.log("Valeurs de la carte:\n " + valeur);
+  console.log("Valeurs des cartes posées:\n " + cardvisible);
+  console.log("Valeurs des cartes active:\n " + cardactive);
   return randomItem;
 }
 
@@ -238,9 +238,15 @@ function addcard() {
   //Montre la bulle pour passer le tour si une carte au moins a été posée et si c'est le tour du joueur.
   if (joueur == 0 && cardactive.length > 0) {
     $("#passe").show();
+    var randomcardperceval=randomcard();
+    listescore[1]=cardvisible[-1]
+    cardvisible.splice(-1,1);
+    cardactive.splice(-1,1);
+    $("#carteperceval").attr("src","img/card/"+myCards[randomcardperceval]["path"]);   
   }
   clickonCard();
 }
+
 
 function animateCard() {
   clicked = this.id;
@@ -466,6 +472,7 @@ function resetgame() {
   arrowbottom();
   cardvisible.length = 0;
   cardactive.length = 0;
+  cardsortie.length=0;
   addcard();
   joueur = 0;
   refreshscore(joueur);

@@ -41,6 +41,11 @@
   bottom: 51px;
 }
 
+#carteperceval{
+  position: fixed;
+  top: 51px;
+}
+
 body {
   min-height: 100vh;
   background: url("../img/background.jpg");
