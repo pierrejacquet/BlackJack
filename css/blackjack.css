@@ -44,6 +44,7 @@
 #carteperceval{
   position: fixed;
   top: 51px;
+  right:440px;
 }
 
 body {
