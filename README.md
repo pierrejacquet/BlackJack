@@ -1,9 +1,7 @@
-# BlackJack
-Web Project in M1 Bioinformatic
+# BlackJack de Kaamelott
 
+## Web Project in M1 Bioinformatic
 
-TO-DO:
-- Jeu principal
-- Main qui attrape ?
-- Monney
-- Actualisation du score
+Pierre JACQUET & Benoit BOTHOREL
+
+![Screenshot of the game](img/screen_gameplay.png)

@@ -1,3 +1,10 @@
+/*
+ * game.js
+ * Pierre JACQUET & Benoit BOTHOREL
+ * Last-modification: Sat Jan 6 2018
+ *
+*/
+
 var step = 1;
 var path = "img/card/";
 
@@ -124,8 +131,6 @@ var listescore = [0, 0]; // index0: player score, index1: computer score
       });
   };
 })(jQuery);
-
-
 
 function dialogue() {
   step = step + 1;
@@ -336,7 +341,6 @@ function updatemoney() {
   }
 }
 
-
 /*
 *  Victory or Defeat functions
 */
@@ -356,7 +360,9 @@ function refreshscore(joueur) {
     }
     $("#numerateur").text(score);
     listescore[joueur] = score;
-    console.log("Score - Joueur: " + listescore[0]+"  - Ordinateur: "+listescore[1]);
+    console.log(
+      "Score - Joueur: " + listescore[0] + "  - Ordinateur: " + listescore[1]
+    );
     VictoryDefeat();
   } else {
     listescore[joueur] = 0;
@@ -364,7 +370,7 @@ function refreshscore(joueur) {
   }
 }
 
-// Test Victory and Defeat conditions!!! 
+// Test Victory and Defeat conditions!!!
 function VictoryDefeat() {
   if (listescore[0] == 21) {
     victoire();
@@ -384,10 +390,10 @@ function victoire() {
   $("#passe").hide();
   $(".victory").animate({ top: "0vh" });
   argent++;
-  if (argent>0){
+  if (argent > 0) {
     moneygenerator();
   }
-  
+
   updatemoney();
   return;
 }
@@ -465,31 +471,28 @@ function resetgame() {
   refreshscore(joueur);
 }
 
-
-
 //MAIN
-function readyFn( jQuery ) {
+function readyFn(jQuery) {
   $("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
   $("#nextdial").on("click", dialogue);
   $("h1").on("click", moneygenerator);
   moneystarter(argent);
   $("#argent").text(argent);
-  
+
   $("#dialogue").trigger("click");
   clickonCard();
-  
+
   $("#newturn").on("click", function() {
     listescore = [0, 0];
     resetgame();
   });
-  
+
   $("#nexturn").on("click", function() {
     listescore[0] = 0;
     resetgame();
   });
-  
-  $("#passe").on("click", passertour);  
+
+  $("#passe").on("click", passertour);
 }
 
-$( document ).ready( readyFn );
-
+$(document).ready(readyFn);
