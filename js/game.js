@@ -239,7 +239,7 @@ function addcard() {
   if (joueur == 0 && cardactive.length > 0) {
     $("#passe").show();
   }
-  if (joueur == 0 && cardactive.length == 0) {
+  if (joueur == 0 && cardactive.length == 1) {
     var randomcardperceval=randomcard();
     listescore[1]=cardvisible[-1]
     cardvisible.splice(-1,1);
