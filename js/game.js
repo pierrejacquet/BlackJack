@@ -71,7 +71,7 @@ var argent = 3;
 var joueur = 0; // 0 is the player  -> 1 is the computer
 var score = 0;
 var listescore = [0, 0]; // index0: player score, index1: computer score
-var switche=0; //pour empêcher perceval d'avoir des cartes actives de valeurs 0
+var switche = 0; //pour empêcher perceval d'avoir des cartes actives de valeurs 0
 
 // DRAG FUNCTION: adapted from https://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
 (function($) {
@@ -241,20 +241,20 @@ function addcard() {
     $("#passe").show();
   }
   if (joueur == 0 && cardactive.length <= 1) {
-    var randomcardperceval=randomcard();
-    listescore[1]=myCards[randomcardperceval]["value"]
+    var randomcardperceval = randomcard();
+    listescore[1] = myCards[randomcardperceval]["value"];
     console.log(listescore[1]);
-    cardvisible.splice(-1,1);
-    cardactive.splice(-1,1);
-    $("#carteperceval").attr("src","img/card/"+myCards[randomcardperceval]["path"]);
+    cardvisible.splice(-1, 1);
+    cardactive.splice(-1, 1);
+    $("#carteperceval img").attr(
+      "src",
+      "img/card/" + myCards[randomcardperceval]["path"]
+    );
     $("#carteperceval").show();
-
-
   }
 
   clickonCard();
 }
-
 
 function animateCard() {
   clicked = this.id;
@@ -264,7 +264,7 @@ function animateCard() {
     setTimeout(function() {
       $("#" + clicked).flip(true);
     }, 2000);
-    var left = 15 + cardactive.length * 4;
+    var left = 3 + cardactive.length * 4;
     setTimeout(function() {
       $("#" + clicked).removeClass("grow");
       $("#" + clicked).addClass("onboard");
@@ -361,9 +361,9 @@ function updatemoney() {
 
 function refreshscore(joueur) {
   console.log("Joueur=" + joueur);
-  if (joueur==1 && cardactive.length <1 && switche == 0){
-  cardvisible.push(listescore[1]);
-  switche=1;
+  if (joueur == 1 && cardactive.length < 1 && switche == 0) {
+    cardvisible.push(listescore[1]);
+    switche = 1;
   }
   if (cardactive.length > 0) {
     var lastcardplayed = cardactive[cardactive.length - 1];
@@ -396,7 +396,7 @@ function VictoryDefeat() {
     defaite();
   } else if (listescore[1] > 21) {
     victoire();
-  } else if (listescore[1] > listescore[0] && joueur==1) {
+  } else if (listescore[1] > listescore[0] && joueur == 1) {
     defaite();
   }
 }
@@ -486,15 +486,13 @@ function resetgame() {
   arrowbottom();
   cardvisible.length = 0;
   cardactive.length = 0;
-  cardsortie.length=0;
+  cardsortie.length = 0;
   addcard();
   joueur = 0;
-  switche=0;
+  switche = 0;
   refreshscore(joueur);
   $("#carteperceval").hide();
-
 }
-
 
 //MAIN
 function readyFn(jQuery) {
