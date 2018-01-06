@@ -1,63 +1,3 @@
-// GRAB FUNCTION
-(function($) {
-  $.fn.drags = function(opt) {
-    opt = $.extend(
-      { handle: "", cursor: "url(asset/grab.png) 10 2, auto" },
-      opt
-    );
-
-    if (opt.handle === "") {
-      var $el = this;
-    } else {
-      var $el = this.find(opt.handle);
-    }
-
-    return $el
-      .css("cursor", opt.cursor)
-      .on("mousedown", function(e) {
-        if (opt.handle === "") {
-          var $drag = $(this).addClass("draggable");
-        } else {
-          var $drag = $(this)
-            .addClass("active-handle")
-            .parent()
-            .addClass("draggable");
-        }
-        var z_idx = $drag.css("z-index"),
-          drg_h = $drag.outerHeight(),
-          drg_w = $drag.outerWidth(),
-          pos_y = $drag.offset().top + drg_h - e.pageY,
-          pos_x = $drag.offset().left + drg_w - e.pageX;
-        $drag
-          .css("z-index", 1000)
-          .parents()
-          .on("mousemove", function(e) {
-            $(".draggable")
-              .offset({
-                top: e.pageY + pos_y - drg_h,
-                left: e.pageX + pos_x - drg_w
-              })
-              .on("mouseup", function() {
-                $(this)
-                  .removeClass("draggable")
-                  .css("z-index", z_idx);
-              });
-          });
-        e.preventDefault(); // disable selection
-      })
-      .on("mouseup", function() {
-        if (opt.handle === "") {
-          $(this).removeClass("draggable");
-        } else {
-          $(this)
-            .removeClass("active-handle")
-            .parent()
-            .removeClass("draggable");
-        }
-      });
-  };
-})(jQuery);
-
 var step = 1;
 var path = "img/card/";
 var score = 0;
@@ -116,11 +56,73 @@ var myCards = {
   51: { path: "PD.png", value: 10 },
   52: { path: "PV.png", value: 10 }
 };
-var cardsortie=[];
+var cardsortie = [];
 var cardvisible = [];
 var cardactive = [];
 var newmoney = 1;
+var argent = 2;
 var listescore = [0, 0];
+var joueur = 0; //0 is the player  -> 1 is the computer
+
+// DRAG FUNCTION
+(function($) {
+  $.fn.drags = function(opt) {
+    opt = $.extend(
+      { handle: "", cursor: "url(asset/grab.png) 10 2, auto" },
+      opt
+    );
+
+    if (opt.handle === "") {
+      var $el = this;
+    } else {
+      var $el = this.find(opt.handle);
+    }
+
+    return $el
+      .css("cursor", opt.cursor)
+      .on("mousedown", function(e) {
+        if (opt.handle === "") {
+          var $drag = $(this).addClass("draggable");
+        } else {
+          var $drag = $(this)
+            .addClass("active-handle")
+            .parent()
+            .addClass("draggable");
+        }
+        var z_idx = $drag.css("z-index"),
+          drg_h = $drag.outerHeight(),
+          drg_w = $drag.outerWidth(),
+          pos_y = $drag.offset().top + drg_h - e.pageY,
+          pos_x = $drag.offset().left + drg_w - e.pageX;
+        $drag
+          .css("z-index", 1000)
+          .parents()
+          .on("mousemove", function(e) {
+            $(".draggable")
+              .offset({
+                top: e.pageY + pos_y - drg_h,
+                left: e.pageX + pos_x - drg_w
+              })
+              .on("mouseup", function() {
+                $(this)
+                  .removeClass("draggable")
+                  .css("z-index", z_idx);
+              });
+          });
+        e.preventDefault(); // disable selection
+      })
+      .on("mouseup", function() {
+        if (opt.handle === "") {
+          $(this).removeClass("draggable");
+        } else {
+          $(this)
+            .removeClass("active-handle")
+            .parent()
+            .removeClass("draggable");
+        }
+      });
+  };
+})(jQuery);
 
 function dialogue() {
   step = step + 1;
@@ -238,7 +240,7 @@ function animateCard() {
     setTimeout(function() {
       $("#" + clicked).flip(true);
     }, 2000);
-    var left = 15+cardactive.length * 4;
+    var left = 15 + cardactive.length * 4;
     setTimeout(function() {
       $("#" + clicked).removeClass("grow");
       $("#" + clicked).addClass("onboard");
@@ -283,7 +285,7 @@ function arrowbottom() {
 function moneygenerator() {
   newmoney = newmoney + 1;
   var newid = "piece" + newmoney;
-  $("#gameboard").append(
+  $("#ARGENTTTT").append(
     '<img src="img/piece.png" class="money" id="' + newid + '">'
   );
 
@@ -300,18 +302,34 @@ function moneygenerator() {
   $(".money").drags();
 }
 
+function moneystarter(combien) {
+  var i = 1;
+  while (i < combien) {
+    moneygenerator();
+    i++;
+  }
+}
+
+function troudanslabourse() {
+  $("#ARGENTTTT")
+    .find("img:last")
+    .fadeOut("slow", function() {
+      $(this).remove();
+    });
+}
+
 function refreshscore(joueur) {
   console.log("Joueur=" + joueur);
   if (cardactive.length > 0) {
-    var lastcardplayed = cardactive[cardactive.length-1];
+    var lastcardplayed = cardactive[cardactive.length - 1];
     score = 0;
     for (var i = 0; i < cardactive.length; i++) {
       score = score + cardactive[i];
     }
     //modifie la valeur de l'as si jamais il fait dépasser 21
-    if(lastcardplayed==11 && score > 21){
-        cardvisible[cardvisible.length-2]=1;
-        score = score - 10;
+    if (lastcardplayed == 11 && score > 21) {
+      cardvisible[cardvisible.length - 2] = 1;
+      score = score - 10;
     }
     $("#numerateur").text(score);
     listescore[joueur] = score;
@@ -324,7 +342,7 @@ function refreshscore(joueur) {
 }
 
 function VictoryDefeat() {
-  if (listescore[0]==21){
+  if (listescore[0] == 21) {
     victoire();
   } else if (listescore[0] > 21) {
     defaite();
@@ -336,22 +354,37 @@ function VictoryDefeat() {
 }
 
 function victoire() {
-  victory = 1;
-  $(".victory").delay(1000).show(100);
+  $(".victory")
+    .delay(1000)
+    .show(100);
   $("#passe").hide();
-  $(".victory").animate({top: '0vh'});
+  $(".victory").animate({ top: "0vh" });
   moneygenerator();
+  argent++;
+  updatemoney();
   return;
 }
 
 function defaite() {
-  defeat = 1;
-  $(".defeat").delay(1000).show(100);
+  $(".defeat")
+    .delay(1000)
+    .show(100);
   $("#passe").hide();
-  $(".defeat").animate({top: '0vh'});
+  $(".defeat").animate({ top: "0vh" });
+  troudanslabourse();
+  argent--;
+  updatemoney();
   return;
 }
 
+function updatemoney() {
+  if (argent <= 0) {
+    var pret = -argent + 1;
+    $("#argent").text("Le tavernier vous prête : " + pret);
+  } else {
+    $("#argent").text(argent);
+  }
+}
 function passertour() {
   if (joueur == 0) {
     joueur = 1;
@@ -363,6 +396,7 @@ function passertour() {
     refreshscore(joueur);
     arrowtop();
     TourPerceval();
+    ("#div1");
   } else {
     joueur = 0;
   }
@@ -380,8 +414,6 @@ function TourPerceval() {
 }
 
 function clickonCard() {
-  defeat = 0;
-  victory = 0;
   $(".gamecard").on("click", animateCard);
   $(".gamecard").on("mousedown", zoom);
   $(".gamecard").on("mouseup", dezoom);
@@ -396,17 +428,6 @@ function clickonCard() {
   refreshscore(joueur);
 }
 
-//MAIN
-var joueur = 0; //0 is the player  -> 1 is the computer
-var victory = 0;
-var defeat = 0;
-$("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
-$("#nextdial").on("click", dialogue);
-$("h1").on("click", moneygenerator);
-$("#dialogue").trigger("click");
-clickonCard();
-
-// RESET functions
 function resetgame() {
   $(".gamecard").remove();
   $(".victory").hide();
@@ -420,6 +441,18 @@ function resetgame() {
   joueur = 0;
   refreshscore(joueur);
 }
+
+//MAIN
+
+$("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
+$("#nextdial").on("click", dialogue);
+$("h1").on("click", moneygenerator);
+moneystarter(argent);
+$("#argent").text(argent);
+
+$("#dialogue").trigger("click");
+clickonCard();
+
 $("#newturn").on("click", function() {
   listescore = [0, 0];
   resetgame();
