@@ -408,7 +408,9 @@ function victoire() {
   $("#passe").hide();
   $(".victory").animate({ top: "0vh" });
   argent++;
-  if (argent > 0) {
+  argent++;
+  if (argent > 1) {
+    moneygenerator();
     moneygenerator();
   }
 
