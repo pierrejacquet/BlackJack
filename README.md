@@ -4,4 +4,4 @@
 
 Pierre JACQUET & Benoit BOTHOREL
 
-![Screenshot of the game](img/screen_gameplay.png)
+![screen_gameplay.png](img/screen_gameplay.png)
