@@ -239,6 +239,10 @@ function addcard() {
   //Montre la bulle pour passer le tour si une carte au moins a été posée et si c'est le tour du joueur.
   if (joueur == 0 && cardactive.length > 0) {
     $("#passe").show();
+    $("#abandon").show();
+  }
+  if (joueur ==0 && cardactive.length >1){
+    $("#abandon").hide();
   }
   if (joueur == 0 && cardactive.length <= 1) {
     var randomcardperceval = randomcard();
@@ -434,6 +438,7 @@ function defaite() {
 function passertour() {
   if (joueur == 0) {
     joueur = 1;
+    $("#abandon").hide();
     $("#passe").hide();
     $(".gamecard").remove();
     cardvisible.length = 0;
@@ -446,6 +451,11 @@ function passertour() {
   } else {
     joueur = 0;
   }
+}
+
+function abandonner(){
+  resetgame();
+  $("#passe").hide();
 }
 
 function TourPerceval() {
@@ -489,6 +499,7 @@ function resetgame() {
   switche = 0;
   refreshscore(joueur);
   $("#carteperceval").hide();
+  $("#abandon").hide();
 }
 
 //MAIN
@@ -518,6 +529,7 @@ function readyFn(jQuery) {
   });
 
   $("#passe").on("click", passertour);
-}
 
+  $("#abandon").on("click",abandonner);
+}
 $(document).ready(readyFn);
