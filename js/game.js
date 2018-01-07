@@ -211,9 +211,9 @@ function randomcard() {
   cardsortie.push(randomItem);
   cardvisible.push(valeur);
   cardactive = cardvisible.slice(0, cardvisible.length - 1);
-  console.log("Valeurs de la carte:\n " + valeur);
-  console.log("Valeurs des cartes posées:\n " + cardvisible);
-  console.log("Valeurs des cartes active:\n " + cardactive);
+  //console.log("Valeurs de la carte:\n " + valeur);
+  //console.log("Valeurs des cartes posées:\n " + cardvisible);
+  //console.log("Valeurs des cartes active:\n " + cardactive);
   return randomItem;
 }
 
@@ -241,7 +241,7 @@ function addcard() {
     $("#passe").show();
     $("#abandon").show();
   }
-  if (joueur ==0 && cardactive.length >1){
+  if (joueur == 0 && cardactive.length > 1) {
     $("#abandon").hide();
   }
   if (joueur == 0 && cardactive.length <= 1) {
@@ -453,7 +453,7 @@ function passertour() {
   }
 }
 
-function abandonner(){
+function abandonner() {
   resetgame();
   $("#passe").hide();
 }
@@ -530,6 +530,6 @@ function readyFn(jQuery) {
 
   $("#passe").on("click", passertour);
 
-  $("#abandon").on("click",abandonner);
+  $("#abandon").on("click", abandonner);
 }
 $(document).ready(readyFn);

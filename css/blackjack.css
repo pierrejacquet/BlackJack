@@ -379,7 +379,7 @@ i small {
   width: 200px;
   position: fixed;
   bottom: -40px;
-  left: 30vh;
+  left: 15vw;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -397,7 +397,7 @@ i small {
   width: 200px;
   position: fixed;
   bottom: -40px;
-  left: 60vh;
+  left: 30vw;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
