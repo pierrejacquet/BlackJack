@@ -332,6 +332,7 @@ function moneygenerator() {
   $("#" + newid).css("margin-top", "60vh");
   $("#" + newid).css("transform", "rotate(" + randAngle + "deg)");
   $(".money").drags();
+
 }
 
 function moneystarter(combien) {
@@ -409,6 +410,7 @@ function victoire() {
     .delay(1000)
     .show(100);
   $("#passe").hide();
+  $(".gamecard").hide();
   $(".victory").animate({ top: "0vh" });
   argent++;
   if (argent > 0) {
@@ -424,6 +426,7 @@ function defaite() {
     .delay(1000)
     .show(100);
   $("#passe").hide();
+  $(".gamecard").hide();
   $(".defeat").animate({ top: "0vh" });
   argent--;
   troudanslabourse();
@@ -506,7 +509,11 @@ function resetgame() {
 function readyFn(jQuery) {
   $("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
   $("#nextdial").on("click", dialogue);
-  $("h1").on("click", moneygenerator);
+  $("h1").on("click", function(){
+    moneygenerator();
+    argent++;
+    updatemoney();
+  });
   moneystarter(argent);
   $("#argent").text(argent);
 
