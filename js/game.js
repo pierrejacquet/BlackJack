@@ -1,7 +1,7 @@
 /*
  * game.js
  * Pierre JACQUET & Benoit BOTHOREL
- * Last-modification: Sat Jan 6 2018
+ * Last-modification: Sat Jan 15 2018
  *
 */
 
