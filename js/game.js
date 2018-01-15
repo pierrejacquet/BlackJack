@@ -1,7 +1,7 @@
 /*
  * game.js
  * Pierre JACQUET & Benoit BOTHOREL
- * Last-modification: Sat Jan 6 2018
+ * Last-modification: Sat Jan 15 2018
  *
 */
 
@@ -332,6 +332,7 @@ function moneygenerator() {
   $("#" + newid).css("margin-top", "60vh");
   $("#" + newid).css("transform", "rotate(" + randAngle + "deg)");
   $(".money").drags();
+
 }
 
 function moneystarter(combien) {
@@ -506,7 +507,11 @@ function resetgame() {
 function readyFn(jQuery) {
   $("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
   $("#nextdial").on("click", dialogue);
-  $("h1").on("click", moneygenerator);
+  $("h1").on("click", function(){
+    moneygenerator();
+    argent++;
+    updatemoney();
+  });
   moneystarter(argent);
   $("#argent").text(argent);
 
