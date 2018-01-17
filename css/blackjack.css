@@ -387,6 +387,16 @@ text-shadow: 9px 9px 2px #000;
   margin-left: 83px;
   margin-top: -56px;
 }
+
+#mise {
+  font-family: metamorphous;
+  font-size: 2em;
+  position: fixed;
+  bottom:38vh;
+  left:65vw;
+  color: rgba(254, 249, 249, 0.64);
+}
+
 .money {
   position: absolute;
   width: 80px;
