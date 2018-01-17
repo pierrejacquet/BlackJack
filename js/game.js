@@ -322,8 +322,13 @@ function arrowbottom() {
 function moneygenerator() {
   idmoney = idmoney + 1;
   var newid = "piece" + idmoney;
+  var windo=$(window).width();
+  var placebourse=windo-550;
+  var bourse=placebourse+"px";
+  console.log(windo);
+  console.log(bourse);
   $("#ARGENTTTT").append(
-    '<img src="img/piece.png" class="money" id="' + newid + '">'
+    '<img src="img/piece.png" style="right:'+bourse+';top:70vh;  transition: all 0.5s linear;" class="money" id="' + newid + '">'
   );
 
   var bodyWidth = document.body.clientWidth;
@@ -341,7 +346,7 @@ function moneygenerator() {
 }
 
 function moneystarter(combien) {
-  var i = 1;
+  var i = 0;
   while (i < combien) {
     moneygenerator();
     i++;
@@ -395,6 +400,15 @@ function miser25(){
   if (argent > 24){
     mise=mise+25;
     argent=argent-25;
+  }
+  $("#argent").text(argent);
+  console.log("Mise = "+mise);
+  return mise;
+}
+function miser50(){
+  if (argent > 49){
+    mise=mise+50;
+    argent=argent-50;
   }
   $("#argent").text(argent);
   console.log("Mise = "+mise);
@@ -498,6 +512,8 @@ function passertour() {
 }
 
 function abandonner() {
+  argent = argent + mise;
+  updatemoney();
   resetgame();
   $("#passe").hide();
 }
@@ -561,7 +577,7 @@ function readyFn(jQuery) {
     argent++;
     updatemoney();
   });
-  moneystarter(argent);
+  // moneystarter(argent);
   $("#argent").text(argent);
 
   $("#dialogue").trigger("click");
@@ -573,6 +589,7 @@ function readyFn(jQuery) {
   });
   $("#mise2").on("click", function(){
     miser5();
+    moneystarter(5);
     updatemoney();
   });
   $("#mise3").on("click", function(){
@@ -581,6 +598,11 @@ function readyFn(jQuery) {
   });
   $("#mise4").on("click", function(){
     miser25();
+    moneystarter(25);
+    updatemoney();
+  });
+  $("#mise5").on("click", function(){
+    miser50();
     updatemoney();
   });
 
@@ -604,3 +626,23 @@ function readyFn(jQuery) {
   $("#abandon").on("click", abandonner);
 }
 $(document).ready(readyFn);
+
+(function(){
+  var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i-1,r=150;
+  ul.click(function(){
+    $(this).toggleClass('active');
+    if($(this).hasClass('active')){
+      for(var a=0;a<i;a++){
+        li.eq(a).css({
+          'transition-delay':""+(50*a)+"ms",
+          '-webkit-transition-delay':""+(50*a)+"ms",
+          'opacity':'100',
+          'left':(r*Math.cos(90/n*a*(Math.PI/180))),
+          'top':(-r*Math.sin(90/n*a*(Math.PI/180)))
+        });
+      }
+    }else{
+      li.removeAttr('style');
+    }
+  });
+})($);

@@ -178,47 +178,102 @@ body {
   left: 250px;
   z-index: -1;
 }
-#mise1{
 
-  position: fixed;
-  bottom: 5vh;
-  width: 200px;
-  left: 450px;
-  z-index: 10;
-}
-#mise2{
+/*.mise{
 
-  position: fixed;
-  bottom: 5vh;
-  width: 200px;
-  left: 550px;
-  z-index: 10;
-}
-#mise3{
-
-  position: fixed;
-  bottom: 5vh;
-  width: 200px;
-  left: 650px;
-  z-index: 10;
-}
-#mise4{
-
-  position: fixed;
-  bottom: 5vh;
-  width: 200px;
-  left: 750px;
-  z-index: 10;
-}
-.mise1{
 
   position: fixed;
   bottom: 1vh;
-  width: 200px;
-  left: 450px;
-  z-index: -1;
+  width: 500px;
+  left: 30vw;
+  z-index: 10;
+
 }
-.mise2{
+
+.mise img{
+  width:100%
+}
+
+.mise p{
+  text-align: center;
+}*/
+
+
+
+#navs {
+  position: fixed;
+  left: 278px;
+  bottom: 162px;
+  width: 140px;
+  height: 140px;
+  line-height: 40px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1;
+  transform: rotate(60deg);
+}
+
+#navs>li,
+#navs:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  /*background-color: #4ECDC4;*/
+
+}
+
+#navs>li {
+  transition: all .6s;
+  -webkit-transition: all .6s;
+  -moz-transition: .6s;
+  transform: rotate(-60deg);
+  opacity:0;
+  z-index: 1;
+  pointer-events:none;
+}
+/*#navs>li *{
+  opacity: 0!important;
+}*/
+#navs:after {
+  content: attr(data-close);
+  z-index: 1;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+#navs.active:after {
+  content: attr(data-open);
+}
+
+#navs a {
+  width: 90px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1em;
+  top: 30%;
+  position: relative;
+  font-family: metamorphous;
+  z-index: 9;
+  pointer-events:all;
+}
+#navs:hover{
+text-shadow: 9px 9px 2px #000;
+}
+
+
+/*.mise2{
   position: fixed;
   bottom: 1vh;
   width: 200px;
@@ -238,7 +293,8 @@ body {
   width: 200px;
   left: 750px;
   z-index: -1;
-}
+}*/
+
 .defeat {
   position: fixed;
   top: -100vh;
@@ -261,6 +317,7 @@ body {
   margin-left: 45vw;
   margin-right: auto;
   width: 10vw;
+  z-index:15;
 
   -webkit-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
