@@ -178,6 +178,67 @@ body {
   left: 250px;
   z-index: -1;
 }
+#mise1{
+
+  position: fixed;
+  bottom: 5vh;
+  width: 200px;
+  left: 450px;
+  z-index: 10;
+}
+#mise2{
+
+  position: fixed;
+  bottom: 5vh;
+  width: 200px;
+  left: 550px;
+  z-index: 10;
+}
+#mise3{
+
+  position: fixed;
+  bottom: 5vh;
+  width: 200px;
+  left: 650px;
+  z-index: 10;
+}
+#mise4{
+
+  position: fixed;
+  bottom: 5vh;
+  width: 200px;
+  left: 750px;
+  z-index: 10;
+}
+.mise1{
+
+  position: fixed;
+  bottom: 1vh;
+  width: 200px;
+  left: 450px;
+  z-index: -1;
+}
+.mise2{
+  position: fixed;
+  bottom: 1vh;
+  width: 200px;
+  left: 550px;
+  z-index: -1;
+}
+.mise3{
+  position: fixed;
+  bottom: 1vh;
+  width: 200px;
+  left: 650px;
+  z-index: -1;
+}
+.mise4{
+  position: fixed;
+  bottom: 1vh;
+  width: 200px;
+  left: 750px;
+  z-index: -1;
+}
 .defeat {
   position: fixed;
   top: -100vh;
@@ -271,7 +332,7 @@ body {
 }
 .money {
   position: absolute;
-  width: 100px;
+  width: 80px;
   z-index: 0;
 }
 #piece1 {

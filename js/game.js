@@ -63,11 +63,12 @@ var myCards = {
   52: { path: "PV.png", value: 10 }
 };
 
+var mise=0;
 var cardsortie = [];
 var cardvisible = [];
 var cardactive = [];
 var idmoney = 1;
-var argent = 3;
+var argent = 50;
 var joueur = 0; // 0 is the player  -> 1 is the computer
 var score = 0;
 var listescore = [0, 0]; // index0: player score, index1: computer score
@@ -222,6 +223,10 @@ function randomcard() {
 */
 
 function addcard() {
+  $(".mise1").hide();
+  $(".mise2").hide();
+  $(".mise3").hide();
+  $(".mise4").hide();
   var nbcard = numberofcard();
   var Item = randomcard();
   var nextcardid = nbcard + 1;
@@ -359,6 +364,43 @@ function updatemoney() {
   }
 }
 
+function miser1(){
+  if (argent > 0){
+    mise++;
+    argent--;
+  }
+  $("#argent").text(argent);
+  console.log("Mise = "+mise);
+  return mise;
+}
+function miser5(){
+  if (argent > 4){
+    mise=mise+5;
+    argent=argent-5;
+  }
+  $("#argent").text(argent);
+  console.log("Mise = "+mise);
+  return mise;
+}
+function miser10(){
+  if (argent > 9){
+    mise=mise+10;
+    argent=argent-10;
+  }
+  $("#argent").text(argent);
+  console.log("Mise = "+mise);
+  return mise;
+}
+function miser25(){
+  if (argent > 24){
+    mise=mise+25;
+    argent=argent-25;
+  }
+  $("#argent").text(argent);
+  console.log("Mise = "+mise);
+  return mise;
+}
+
 /*
 *  Victory or Defeat functions
 */
@@ -412,7 +454,7 @@ function victoire() {
   $("#passe").hide();
   $(".gamecard").hide();
   $(".victory").animate({ top: "0vh" });
-  argent++;
+  argent=argent+mise*2;
   if (argent > 0) {
     moneygenerator();
   }
@@ -428,7 +470,6 @@ function defaite() {
   $("#passe").hide();
   $(".gamecard").hide();
   $(".defeat").animate({ top: "0vh" });
-  argent--;
   troudanslabourse();
   updatemoney();
   return;
@@ -500,9 +541,15 @@ function resetgame() {
   addcard();
   joueur = 0;
   switche = 0;
+  mise=0;
   refreshscore(joueur);
   $("#carteperceval").hide();
   $("#abandon").hide();
+  $(".mise1").show();
+  $(".mise2").show();
+  $(".mise3").show();
+  $(".mise4").show();
+
 }
 
 //MAIN
@@ -519,6 +566,23 @@ function readyFn(jQuery) {
 
   $("#dialogue").trigger("click");
   clickonCard();
+
+  $("#mise1").on("click", function(){
+    miser1();
+    updatemoney();
+  });
+  $("#mise2").on("click", function(){
+    miser5();
+    updatemoney();
+  });
+  $("#mise3").on("click", function(){
+    miser10();
+    updatemoney();
+  });
+  $("#mise4").on("click", function(){
+    miser25();
+    updatemoney();
+  });
 
   $("#newturn").on("click", function() {
     listescore = [0, 0];
