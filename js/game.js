@@ -374,8 +374,12 @@ function miser1(){
     moneystarter(1);
     updatemoney();
   }
+
   $("#argent").text(argent);
   $("#mise").append("Mise : "+mise);
+  if(mise==0){
+    $("#mise").empty();
+  }
   console.log("Mise = "+mise);
   return mise;
 }
@@ -389,6 +393,9 @@ function miser5(){
   }
   $("#argent").text(argent);
   $("#mise").append("Mise : "+mise);
+  if(mise==0){
+    $("#mise").empty();
+  }
   console.log("Mise = "+mise);
   return mise;
 }
@@ -402,6 +409,9 @@ function miser10(){
   }
   $("#argent").text(argent);
   $("#mise").append("Mise : "+mise);
+  if(mise==0){
+    $("#mise").empty();
+  }
   console.log("Mise = "+mise);
   return mise;
 }
@@ -415,6 +425,9 @@ function miser25(){
   }
   $("#argent").text(argent);
   $("#mise").append("Mise : "+mise);
+  if(mise==0){
+    $("#mise").empty();
+  }
   console.log("Mise = "+mise);
   return mise;
 }
@@ -428,6 +441,9 @@ function miser50(){
   }
   $("#argent").text(argent);
   $("#mise").append("Mise : "+mise);
+  if(mise==0){
+    $("#mise").empty();
+  }
   console.log("Mise = "+mise);
   return mise;
 }
