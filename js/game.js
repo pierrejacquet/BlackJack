@@ -214,7 +214,7 @@ function randomcard() {
   cardactive = cardvisible.slice(0, cardvisible.length - 1);
   //console.log("Valeurs de la carte:\n " + valeur);
   //console.log("Valeurs des cartes posées:\n " + cardvisible);
-  //console.log("Valeurs des cartes active:\n " + cardactive);
+  // console.log("Valeurs des cartes active:\n " + cardactive);
   return randomItem;
 }
 
@@ -322,8 +322,6 @@ function moneygenerator() {
   var windo=$(window).width();
   var placebourse=windo-550;
   var bourse=placebourse+"px";
-  console.log(windo);
-  console.log(bourse);
   $("#ARGENTTTT").append(
     '<img src="img/piece.png" style="right:'+bourse+';top:70vh;  transition: all 0.5s linear;" class="money" id="' + newid + '">'
   );
@@ -358,13 +356,10 @@ function troudanslabourse() {
     });
 }
 function updatemoney() {
-  if (argent <= 0) {
-    var pret = -argent + 1;
-    $("#argent").text("Le tavernier vous prête : " + pret);
-  } else {
+
     $("#argent").text(argent);
   }
-}
+
 
 function miser1(){
   $("#mise").empty();
@@ -380,7 +375,6 @@ function miser1(){
   if(mise==0){
     $("#mise").empty();
   }
-  console.log("Mise = "+mise);
   return mise;
 }
 function miser5(){
@@ -396,7 +390,6 @@ function miser5(){
   if(mise==0){
     $("#mise").empty();
   }
-  console.log("Mise = "+mise);
   return mise;
 }
 function miser10(){
@@ -412,7 +405,6 @@ function miser10(){
   if(mise==0){
     $("#mise").empty();
   }
-  console.log("Mise = "+mise);
   return mise;
 }
 function miser25(){
@@ -428,7 +420,6 @@ function miser25(){
   if(mise==0){
     $("#mise").empty();
   }
-  console.log("Mise = "+mise);
   return mise;
 }
 function miser50(){
@@ -444,7 +435,6 @@ function miser50(){
   if(mise==0){
     $("#mise").empty();
   }
-  console.log("Mise = "+mise);
   return mise;
 }
 
@@ -501,7 +491,13 @@ function victoire() {
   $("#passe").hide();
   $(".gamecard").hide();
   $(".victory").animate({ top: "0vh" });
-  argent=argent+mise*2;
+  if(listescore[0]==21 && cardactive.length == 2){
+    argent=argent+mise*2.5
+  }
+  else{
+      argent=argent+mise*2;
+  }
+
   if (argent > 0) {
     moneygenerator();
   }
@@ -521,6 +517,16 @@ function defaite() {
   updatemoney();
   $(".money").remove();
   return;
+}
+
+function areUbroke(){
+  if(argent <= 0){
+    $("#broke").show();
+    $("#broke").empty();
+    $("#broke").append("Vous êtes ruinés ! Rejouer ?");
+
+
+  }
 }
 
 /*
@@ -633,19 +639,29 @@ function readyFn(jQuery) {
     miser50();
   });
 
+  $("#broke").on("click", function(){
+    $("#broke").hide();
+    argent=50;
+    resetgame();
+    updatemoney();
+  })
+
   $("#newturn").on("click", function() {
     listescore = [0, 0];
+    areUbroke();
     resetgame();
   });
 
   $("#nexturn").on("click", function() {
     listescore[0] = 0;
-    resetgame();
+      areUbroke();
+      resetgame();
   });
 
   $("#nexturn").on("click", function() {
     listescore[1] = 0;
-    resetgame();
+      areUbroke();
+      resetgame();
   });
 
   $("#passe").on("click", passertour);
