@@ -414,11 +414,11 @@ text-shadow: 9px 9px 2px #000;
   width: 80px;
   z-index: 0;
 }
-#piece1 {
+/* #piece1 {
   position: absolute;
   top: 70vh;
   right: 10vh;
-}
+} */
 #ecu {
   font-family: metamorphous;
   color: rgba(254, 249, 249, 0.64);

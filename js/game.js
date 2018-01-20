@@ -340,6 +340,30 @@ function moneygenerator() {
 
 }
 
+function easterEgg() {
+  idmoney = idmoney + 1;
+  var newid = "piece" + idmoney;
+  var windo=$(window).width();
+  var placebourse=windo-550;
+  var bourse=placebourse+"px";
+  $("#ARGENTTTT").append(
+    '<img src="img/piece.png" style="left:'+bourse+';top:70vh;  transition: all 0.5s linear;" class="money" id="' + newid + '">'
+  );
+
+  var bodyWidth = document.body.clientWidth;
+  var bodyHeight = document.body.clientHeight;
+  var randPosX = 270;
+  var randPosY = Math.floor(Math.random() * (bodyHeight * 0.15));
+  var randAngle = Math.floor(Math.random() * 360) + 1;
+
+  $("#" + newid).css("left", randPosX);
+  $("#" + newid).css("top", randPosY);
+  $("#" + newid).css("margin-top", "60vh");
+  $("#" + newid).css("transform", "rotate(" + randAngle + "deg)");
+  $(".money").drags();
+  $(".money").delay(400).fadeOut();
+}
+
 function moneystarter(combien) {
   var i = 0;
   while (i < combien) {
@@ -613,7 +637,7 @@ function readyFn(jQuery) {
   $("#cartestarter").attr("src", path + myCards[randomcard()]["path"]);
   $("#nextdial").on("click", dialogue);
   $("h1").on("click", function(){
-    moneygenerator();
+    easterEgg();
     argent++;
     updatemoney();
   });
@@ -670,6 +694,7 @@ function readyFn(jQuery) {
 }
 $(document).ready(readyFn);
 
+//déplacement des pièces de la bourse vers la mise
 (function(){
   var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i-1,r=150;
   ul.click(function(){
