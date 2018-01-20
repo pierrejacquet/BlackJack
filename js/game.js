@@ -242,9 +242,13 @@ function addcard() {
   if (joueur == 0 && cardactive.length > 0) {
     $("#passe").show();
     $("#abandon").show();
+    if(argent >= mise*2 && mise > 0){
+      $("#doubler").show();
+    }
   }
   if (joueur == 0 && cardactive.length > 1) {
     $("#abandon").hide();
+    $("#doubler").hide();
   }
   if (joueur == 0 && cardactive.length <= 1) {
     var randomcardperceval = randomcard();
@@ -383,84 +387,22 @@ function updatemoney() {
 
     $("#argent").text(argent);
   }
+  function miser(newmise){
+    $("#mise").empty();
+    if (argent > 0){
+      mise=mise+newmise;
+      argent=argent-newmise;
+      moneystarter(newmise);
+      updatemoney();
+    }
 
-
-function miser1(){
-  $("#mise").empty();
-  if (argent > 0){
-    mise++;
-    argent--;
-    moneystarter(1);
-    updatemoney();
+    $("#argent").text(argent);
+    $("#mise").append("Mise : "+mise);
+    if(mise==0){
+      $("#mise").empty();
+    }
+    return mise;
   }
-
-  $("#argent").text(argent);
-  $("#mise").append("Mise : "+mise);
-  if(mise==0){
-    $("#mise").empty();
-  }
-  return mise;
-}
-function miser5(){
-  $("#mise").empty();
-  if (argent > 4){
-    mise=mise+5;
-    argent=argent-5;
-    moneystarter(5);
-    updatemoney();
-  }
-  $("#argent").text(argent);
-  $("#mise").append("Mise : "+mise);
-  if(mise==0){
-    $("#mise").empty();
-  }
-  return mise;
-}
-function miser10(){
-  $("#mise").empty();
-  if (argent > 9){
-    mise=mise+10;
-    argent=argent-10;
-    moneystarter(10);
-    updatemoney();
-  }
-  $("#argent").text(argent);
-  $("#mise").append("Mise : "+mise);
-  if(mise==0){
-    $("#mise").empty();
-  }
-  return mise;
-}
-function miser25(){
-  $("#mise").empty();
-  if (argent > 24){
-    mise=mise+25;
-    argent=argent-25;
-    moneystarter(25);
-    updatemoney();
-  }
-  $("#argent").text(argent);
-  $("#mise").append("Mise : "+mise);
-  if(mise==0){
-    $("#mise").empty();
-  }
-  return mise;
-}
-function miser50(){
-  $("#mise").empty();
-  if (argent > 49){
-    mise=mise+50;
-    argent=argent-50;
-    moneystarter(50);
-    updatemoney();
-  }
-  $("#argent").text(argent);
-  $("#mise").append("Mise : "+mise);
-  if(mise==0){
-    $("#mise").empty();
-  }
-  return mise;
-}
 
 /*
 *  Victory or Defeat functions
@@ -580,7 +522,18 @@ function abandonner() {
   updatemoney();
   resetgame();
   $("#passe").hide();
+  $("#doubler").hide();
   $(".money").remove();
+}
+
+function doubler(){
+  if(argent >= mise)
+  {
+    $("#abandon").hide();
+    miser(mise);
+    updatemoney();
+    $("#doubler").hide();
+  }
 }
 
 function TourPerceval() {
@@ -626,6 +579,7 @@ function resetgame() {
   mise=0;
   refreshscore(joueur);
   $("#carteperceval").hide();
+  $("#doubler").hide();
   $("#abandon").hide();
   $("#navs").show();
   $("#mise").empty();
@@ -648,19 +602,19 @@ function readyFn(jQuery) {
   clickonCard();
 
   $("#mise1").on("click", function(){
-    miser1();
+    miser(1);
   });
   $("#mise2").on("click", function(){
-    miser5();
+    miser(5);
   });
   $("#mise3").on("click", function(){
-    miser10();
+    miser(10);
   });
   $("#mise4").on("click", function(){
-    miser25();
+    miser(25);
   });
   $("#mise5").on("click", function(){
-    miser50();
+    miser(50);
   });
 
   $("#broke").on("click", function(){
@@ -691,6 +645,8 @@ function readyFn(jQuery) {
   $("#passe").on("click", passertour);
 
   $("#abandon").on("click", abandonner);
+
+  $("#doubler").on("click",doubler);
 }
 $(document).ready(readyFn);
 

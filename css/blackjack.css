@@ -550,6 +550,25 @@ i small {
   -webkit-filter: drop-shadow(7px 7px 7px black);
   filter: drop-shadow(7px 7px 7px black);
 }
+#doubler {
+  width: 200px;
+  position: fixed;
+  bottom: -40px;
+  left: 60vw;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: none;
+}
+#doubler:hover {
+  bottom: 0px;
+  width: 300px;
+  -webkit-filter: drop-shadow(7px 7px 7px black);
+  filter: drop-shadow(7px 7px 7px black);
+  z-index: 20;
+}
+
 
 #rules .modal-body h4 {
   font-family: metamorphous;
