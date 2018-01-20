@@ -477,21 +477,20 @@ function defaite() {
     .delay(1000)
     .show(100);
   $("#passe").hide();
-  $(".gamecard").hide();
   $(".defeat").animate({ top: "0vh" });
   troudanslabourse();
   updatemoney();
   $(".money").remove();
+  $(".gamecard").hide();
   return;
 }
 
 function areUbroke(){
   if(argent <= 0){
+    $(".gamecard").remove();
     $("#broke").show();
     $("#broke").empty();
     $("#broke").append("Vous êtes ruinés ! Rejouer ?");
-
-
   }
 }
 
@@ -503,6 +502,7 @@ function passertour() {
   if (joueur == 0) {
     joueur = 1;
     $("#abandon").hide();
+    $("#doubler").hide();
     $("#passe").hide();
     $(".gamecard").remove();
     cardvisible.length = 0;
@@ -628,18 +628,29 @@ function readyFn(jQuery) {
     listescore = [0, 0];
     areUbroke();
     resetgame();
+    if(argent<=0){
+      $(".gamecard").hide();
+    }
   });
 
   $("#nexturn").on("click", function() {
-    listescore[0] = 0;
+      listescore[0] = 0;
       areUbroke();
       resetgame();
+      if(argent<=0){
+        $(".gamecard").hide();
+      }      if(argent<=0){
+              $(".gamecard").hide();
+            }
   });
 
   $("#nexturn").on("click", function() {
-    listescore[1] = 0;
+      listescore[1] = 0;
       areUbroke();
       resetgame();
+      if(argent<=0){
+        $(".gamecard").hide();
+      }
   });
 
   $("#passe").on("click", passertour);
