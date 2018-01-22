@@ -481,7 +481,7 @@ function defaite() {
   troudanslabourse();
   updatemoney();
   $(".money").remove();
-  $(".gamecard").hide();
+  // $(".gamecard").hide();
   return;
 }
 
@@ -639,9 +639,7 @@ function readyFn(jQuery) {
       resetgame();
       if(argent<=0){
         $(".gamecard").hide();
-      }      if(argent<=0){
-              $(".gamecard").hide();
-            }
+      }
   });
 
   $("#nexturn").on("click", function() {
