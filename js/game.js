@@ -242,7 +242,7 @@ function addcard() {
   if (joueur == 0 && cardactive.length > 0) {
     $("#passe").show();
     $("#abandon").show();
-    if(argent >= mise*2 && mise > 0){
+    if(argent >= mise && mise > 0){
       $("#doubler").show();
     }
   }
